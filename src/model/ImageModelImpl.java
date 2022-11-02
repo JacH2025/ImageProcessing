@@ -1,7 +1,12 @@
 package model;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 
 import controller.ImageCommands;
@@ -18,19 +23,17 @@ public class ImageModelImpl implements ImageModel {
   private IPixel[][] image;
   private final int width;
   private final int height;
-  private HashMap<String, File> load;
+  private HashMap<String, ImageModel> load = new HashMap<>();
 
   /**
+   *
    * @param filename
-   * @IOException
    */
-  public ImageModelImpl(String filename) throws IOException {
+  public ImageModelImpl(String filename) {
     this.image = imageData(readPPM(filename));
     this.width = getPPMHeight(readPPM(filename));
     this.height = getPPMWidth(readPPM(filename));
-    this.load = new HashMap<>();
   }
-
 
   @Override
   public IPixel[][] getImage() {
@@ -53,14 +56,36 @@ public class ImageModelImpl implements ImageModel {
   }
 
   @Override
-  public void loadImage() {
-
+  public void loadImage(String filename, String name) {
+    ImageModel model = new ImageModelImpl(filename);
+    load.put(name, model);
   }
 
   @Override
-  public void save(String dest) {
-    File file = new File(dest);
+  public void save(String location, String name) {
+    ImageModel model = load.get(name);
+    Path path = Paths.get(location);
+    String file = createPPM(model);
+    try {
+      Files.writeString(path, file, StandardCharsets.UTF_8);
+    } catch (IOException e) {
 
+    }
+  }
+
+  private String createPPM(ImageModel m) {
+    StringBuilder build = new StringBuilder();
+    build.append("P3\n");
+    build.append(width + " " + height + "\n");
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        build.append(image[i][j].getRed() + " ");
+        build.append(image[i][j].getGreen() + " ");
+        build.append(image[i][j].getBlue() + " ");
+      }
+      build.append("\n");
+    }
+    return build.toString();
   }
 
   @Override

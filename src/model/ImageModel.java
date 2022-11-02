@@ -32,12 +32,12 @@ public interface ImageModel {
   /**
    *
    */
-  void loadImage();
+  void loadImage(String filename, String name);
 
   /**
    *
    */
-  void save(String dest);
+  void save(String location, String name);
 
   /**
    *

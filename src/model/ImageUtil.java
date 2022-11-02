@@ -88,10 +88,6 @@ public class ImageUtil {
     return width;
   }
 
-  public static void createPPMFile() {
-
-  }
-
   /**
    *
    * @param sc
