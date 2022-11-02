@@ -32,12 +32,21 @@ public class Brighten implements ImageCommands {
     IPixel[][] newImage = new IPixel[model.getHeight()][model.getWidth()];
     for (int i = 0; i < model.getHeight(); i++) {
       for (int j = 0; j < model.getWidth(); j++) {
-        int newR = model.getPixel(i, j).getRed() + increment;
-        int newG = model.getPixel(i, j).getGreen() + increment;
-        int newB = model.getPixel(i, j).getBlue() + increment;
+        int newR = cap(model.getPixel(i, j).getRed() + increment);
+        int newG = cap(model.getPixel(i, j).getGreen() + increment);
+        int newB = cap(model.getPixel(i, j).getBlue() + increment);
         newImage[i][j] = new PixelImpl(newR, newG, newB);
       }
     }
     m.loadImage(new ImageModelImpl(newImage), destImageName);
+  }
+
+  private int cap(int value) {
+    if (value < 0) {
+      value = 0;
+    } else if (value > 255) {
+      value = 255;
+    }
+    return value;
   }
 }

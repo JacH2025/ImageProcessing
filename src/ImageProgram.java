@@ -1,10 +1,7 @@
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import controller.ImageCommands;
 import controller.ImageControllerImpl;
-import model.ImageModel;
-import model.ImageModelImpl;
 
 public class ImageProgram {
   public static void main(String []args) throws IOException {
@@ -18,6 +15,5 @@ public class ImageProgram {
 
     ImageControllerImpl controller = new ImageControllerImpl(new InputStreamReader(System.in), System.out);
     controller.run();
-
   }
 }

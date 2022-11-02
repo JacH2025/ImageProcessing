@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -22,6 +21,9 @@ public class ImageModelImpl implements ImageModel {
   private final int height;
   private final HashMap<String, ImageModel> load = new HashMap<>();
 
+  /**
+   *
+   */
   public ImageModelImpl() {
     this.image = null;
     this.width = 0;
