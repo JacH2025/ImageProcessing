@@ -24,11 +24,12 @@ public class HorizontalFlip implements ImageCommands {
 
   @Override
   public void execute(ImageModel m) {
-    IPixel[][] newImage = new IPixel[m.getHeight()][m.getWidth()];
-    for (int i = 0; i < m.getHeight(); i++) {
+    ImageModel model = m.getModel(imageName);
+    IPixel[][] newImage = new IPixel[model.getHeight()][model.getWidth()];
+    for (int i = 0; i < model.getHeight(); i++) {
       int x = 1;
-      for (int j = 0; j < m.getWidth(); j++) {
-        newImage[i][j] = m.getImage()[i][m.getWidth() - x];
+      for (int j = 0; j < model.getWidth(); j++) {
+        newImage[i][j] = model.getImage()[i][model.getWidth() - x];
         x++;
       }
     }

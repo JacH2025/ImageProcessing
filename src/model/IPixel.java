@@ -49,5 +49,4 @@ public interface IPixel {
    * @return int
    */
   int getLuma();
-
 }

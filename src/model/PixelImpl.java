@@ -53,9 +53,8 @@ public class PixelImpl implements IPixel {
 
   /**
    *
-   *
    * @param value
-   * @return int of the pixel value
+   * @return
    */
   private int cap(int value) {
     if (value < 0) {

@@ -25,10 +25,11 @@ public class IntensityGreyscale implements ImageCommands {
 
   @Override
   public void execute(ImageModel m) {
-    IPixel[][] newImage = new IPixel[m.getHeight()][m.getWidth()];
-    for (int i = 0; i < m.getHeight(); i++) {
-      for (int j = 0; j < m.getWidth(); j++) {
-        int intensity = m.getPixel(i, j).getIntensity();
+    ImageModel model = m.getModel(imageName);
+    IPixel[][] newImage = new IPixel[model.getHeight()][model.getWidth()];
+    for (int i = 0; i < model.getHeight(); i++) {
+      for (int j = 0; j < model.getWidth(); j++) {
+        int intensity = model.getPixel(i, j).getIntensity();
         newImage[i][j] = new PixelImpl(intensity, intensity, intensity);
       }
     }

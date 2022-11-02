@@ -25,19 +25,20 @@ public class RGBGreyscale implements ImageCommands {
 
   @Override
   public void execute(ImageModel m) {
-    IPixel[][] newImage = new IPixel[m.getHeight()][m.getWidth()];
-    for (int i = 0; i < m.getHeight(); i++) {
-      for (int j = 0; j < m.getWidth(); j++) {
+    ImageModel model = m.getModel(imageName);
+    IPixel[][] newImage = new IPixel[model.getHeight()][model.getWidth()];
+    for (int i = 0; i < model.getHeight(); i++) {
+      for (int j = 0; j < model.getWidth(); j++) {
         int value = 0;
         switch (color) {
           case "red":
-            value = m.getPixel(i, j).getRed();
+            value = model.getPixel(i, j).getRed();
             break;
           case "green":
-            value = m.getPixel(i, j).getGreen();
+            value = model.getPixel(i, j).getGreen();
             break;
           case "blue":
-            value = m.getPixel(i, j).getBlue();
+            value = model.getPixel(i, j).getBlue();
             break;
         }
         newImage[i][j] = new PixelImpl(value, value, value);

@@ -25,10 +25,11 @@ public class LumaGreyscale implements ImageCommands {
 
   @Override
   public void execute(ImageModel m) {
-    IPixel[][] newImage = new IPixel[m.getHeight()][m.getWidth()];
-    for (int i = 0; i < m.getHeight(); i++) {
-      for (int j = 0; j < m.getWidth(); j++) {
-        int luma = m.getPixel(i, j).getLuma();
+    ImageModel model = m.getModel(imageName);
+    IPixel[][] newImage = new IPixel[model.getHeight()][model.getWidth()];
+    for (int i = 0; i < model.getHeight(); i++) {
+      for (int j = 0; j < model.getWidth(); j++) {
+        int luma = model.getPixel(i, j).getLuma();
         newImage[i][j] = new PixelImpl(luma, luma, luma);
       }
     }
