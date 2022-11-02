@@ -25,14 +25,14 @@ public class ValueGreyScale implements ImageCommands {
 
   @Override
   public void execute(ImageModel m) {
-    IPixel[][] newImage = new IPixel[m.getHeight()][m.getWidth()];
-    for (int i = 0; i < m.getHeight(); i++) {
-      for (int j = 0; j < m.getWidth(); j++) {
-        int value = m.getPixels(i, j).getValue();
+    ImageModel model = m.getModel(imageName);
+    IPixel[][] newImage = new IPixel[model.getHeight()][model.getWidth()];
+    for (int i = 0; i < model.getHeight(); i++) {
+      for (int j = 0; j < model.getWidth(); j++) {
+        int value = model.getPixel(i, j).getValue();
         newImage[i][j] = new PixelImpl(value, value, value);
       }
     }
-    ImageModel model = new ImageModelImpl(newImage);
-    m.loadImage(model, destImageName);
+    m.loadImage(new ImageModelImpl(newImage), destImageName);
   }
 }

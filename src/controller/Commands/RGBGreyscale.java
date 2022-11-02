@@ -3,6 +3,7 @@ package controller.Commands;
 import controller.ImageCommands;
 import model.IPixel;
 import model.ImageModel;
+import model.ImageModelImpl;
 import model.PixelImpl;
 
 public class RGBGreyscale implements ImageCommands {
@@ -30,17 +31,18 @@ public class RGBGreyscale implements ImageCommands {
         int value = 0;
         switch (color) {
           case "red":
-            value = m.getPixels(i, j).getRed();
+            value = m.getPixel(i, j).getRed();
             break;
           case "green":
-            value = m.getPixels(i, j).getGreen();
+            value = m.getPixel(i, j).getGreen();
             break;
           case "blue":
-            value = m.getPixels(i, j).getBlue();
+            value = m.getPixel(i, j).getBlue();
             break;
         }
         newImage[i][j] = new PixelImpl(value, value, value);
       }
     }
+    m.loadImage(new ImageModelImpl(newImage), destImageName);
   }
 }

@@ -3,6 +3,7 @@ package controller.Commands;
 import controller.ImageCommands;
 import model.IPixel;
 import model.ImageModel;
+import model.ImageModelImpl;
 import model.PixelImpl;
 
 /**
@@ -27,9 +28,10 @@ public class IntensityGreyscale implements ImageCommands {
     IPixel[][] newImage = new IPixel[m.getHeight()][m.getWidth()];
     for (int i = 0; i < m.getHeight(); i++) {
       for (int j = 0; j < m.getWidth(); j++) {
-        int intensity = m.getPixels(i, j).getIntensity();
+        int intensity = m.getPixel(i, j).getIntensity();
         newImage[i][j] = new PixelImpl(intensity, intensity, intensity);
       }
     }
+    m.loadImage(new ImageModelImpl(newImage), destImageName);
   }
 }

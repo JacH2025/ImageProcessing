@@ -3,6 +3,7 @@ package controller.Commands;
 import controller.ImageCommands;
 import model.IPixel;
 import model.ImageModel;
+import model.ImageModelImpl;
 import model.PixelImpl;
 
 /**
@@ -27,9 +28,10 @@ public class LumaGreyscale implements ImageCommands {
     IPixel[][] newImage = new IPixel[m.getHeight()][m.getWidth()];
     for (int i = 0; i < m.getHeight(); i++) {
       for (int j = 0; j < m.getWidth(); j++) {
-        int luma = m.getPixels(i, j).getLuma();
+        int luma = m.getPixel(i, j).getLuma();
         newImage[i][j] = new PixelImpl(luma, luma, luma);
       }
     }
+    m.loadImage(new ImageModelImpl(newImage), destImageName);
   }
 }

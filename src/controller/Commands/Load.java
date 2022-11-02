@@ -2,6 +2,7 @@ package controller.Commands;
 
 import controller.ImageCommands;
 import model.ImageModel;
+import model.ImageModelImpl;
 
 /**
  *
@@ -22,6 +23,6 @@ public class Load implements ImageCommands {
 
   @Override
   public void execute(ImageModel m) {
-    m.loadImage(imagePath, imageName);
+    m.loadImage(new ImageModelImpl(imagePath), imageName);
   }
 }

@@ -1,5 +1,8 @@
 import java.io.IOException;
+import java.io.InputStreamReader;
 
+import controller.ImageCommands;
+import controller.ImageControllerImpl;
 import model.ImageModel;
 import model.ImageModelImpl;
 
@@ -12,6 +15,9 @@ public class ImageProgram {
     else {
       filename = "sample.ppm";
     }
-    ImageModel model = new ImageModelImpl(filename);
+
+    ImageControllerImpl controller = new ImageControllerImpl(new InputStreamReader(System.in), System.out);
+    controller.run();
+
   }
 }

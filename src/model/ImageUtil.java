@@ -30,7 +30,7 @@ public class ImageUtil {
     while (sc.hasNextLine()) {
       String s = sc.nextLine();
       if (s.charAt(0) != '#') {
-        builder.append(s + System.lineSeparator());
+        builder.append(s).append(System.lineSeparator());
       }
     }
     return builder.toString();
@@ -73,8 +73,7 @@ public class ImageUtil {
     sc = new Scanner(contents);
     checkPPMFile(sc);
     sc.nextInt();
-    int height = sc.nextInt();
-    return height;
+    return sc.nextInt();
   }
 
   /**
@@ -87,8 +86,7 @@ public class ImageUtil {
     Scanner sc;
     sc = new Scanner(contents);
     checkPPMFile(sc);
-    int width = sc.nextInt();
-    return width;
+    return sc.nextInt();
   }
 
   /**
@@ -118,11 +116,11 @@ public class ImageUtil {
    */
   public static String createPPMFile(IPixel[][] image, int height, int width) {
     StringBuilder build = new StringBuilder();
-    build.append("P3\n" + width + " " + height + "\n" + "255\n");
+    build.append("P3\n").append(width).append(" ").append(height).append("\n").append("255\n");
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
-        build.append(image[i][j].getRed() + " ");
-        build.append(image[i][j].getGreen() + " ");
+        build.append(image[i][j].getRed()).append(" ");
+        build.append(image[i][j].getGreen()).append(" ");
         build.append(image[i][j].getBlue());
         if (j < width - 1) {
           build.append(" ");

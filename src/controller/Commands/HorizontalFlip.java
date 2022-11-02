@@ -3,6 +3,7 @@ package controller.Commands;
 import controller.ImageCommands;
 import model.IPixel;
 import model.ImageModel;
+import model.ImageModelImpl;
 
 /**
  *
@@ -31,6 +32,6 @@ public class HorizontalFlip implements ImageCommands {
         x++;
       }
     }
-    m.loadImage(newImage.toString(), destImageName);
+    m.loadImage(new ImageModelImpl(newImage), destImageName);
   }
 }
