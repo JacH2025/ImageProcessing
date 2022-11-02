@@ -16,7 +16,6 @@ public class ImageProgram {
     }
 
     ImageModel model = new ImageModelImpl(filename);
-    model.horizontalFlip();
 
   }
 }

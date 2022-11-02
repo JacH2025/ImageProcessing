@@ -1,5 +1,6 @@
 package model;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -42,7 +43,7 @@ public class ImageUtil {
    * @param data
    * @return
    */
-  public static int[][][] imageData(String data) {
+  public static IPixel[][] imageData(String data) {
     Scanner sc;
     sc = new Scanner(data);
     checkPPMFile(sc);
@@ -51,13 +52,10 @@ public class ImageUtil {
     int height = sc.nextInt();
     sc.nextInt();
 
-    int[][][] pixels = new int[height][width][3];
+    IPixel[][] pixels = new IPixel[height][width];
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
-        pixels[i][j][0] = sc.nextInt();
-        pixels[i][j][1] = sc.nextInt();
-        pixels[i][j][2] = sc.nextInt();
-        System.out.println("Color of pixel ("+j+","+i+"): "+ pixels[i][j][0]+","+pixels[i][j][1]+","+pixels[i][j][2]);
+        pixels[i][j] = new PixelImpl(sc.nextInt(), sc.nextInt(), sc.nextInt());
       }
     }
     return pixels;
@@ -68,7 +66,7 @@ public class ImageUtil {
    * @param data
    * @return
    */
-  public static int getHeight(String data) {
+  public static int getPPMHeight(String data) {
     Scanner sc;
     sc = new Scanner(data);
     checkPPMFile(sc);
@@ -82,12 +80,16 @@ public class ImageUtil {
    * @param data
    * @return
    */
-  public static int getWidth(String data) {
+  public static int getPPMWidth(String data) {
     Scanner sc;
     sc = new Scanner(data);
     checkPPMFile(sc);
     int width = sc.nextInt();
     return width;
+  }
+
+  public static void createPPMFile() {
+
   }
 
   /**

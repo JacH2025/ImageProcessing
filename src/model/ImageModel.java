@@ -1,31 +1,33 @@
 package model;
 
+import controller.ImageCommands;
+
 /**
  *
  */
 public interface ImageModel {
 
+  /**
+   *
+   * @return
+   */
+  IPixel[][] getImage();
 
+  /**
+   *
+   * @return
+   */
+  IPixel getPixels(int x, int y);
 
   /**
    *
    */
-  void toGreyscale(Components c);
+  int getHeight();
 
   /**
    *
    */
-  void verticalFlip();
-
-  /**
-   *
-   */
-  void horizontalFlip();
-
-  /**
-   *
-   */
-  void brighten(int increment);
+  int getWidth();
 
   /**
    *
@@ -35,5 +37,11 @@ public interface ImageModel {
   /**
    *
    */
-  void save();
+  void save(String dest);
+
+  /**
+   *
+   * @param c
+   */
+  void execute(ImageCommands c);
 }
