@@ -1,16 +1,12 @@
 package model;
 
-import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 
 import controller.ImageCommands;
 
+import static model.ImageUtil.createPPMFile;
 import static model.ImageUtil.readPPM;
 import static model.ImageUtil.imageData;
 import static model.ImageUtil.getPPMHeight;
@@ -31,8 +27,18 @@ public class ImageModelImpl implements ImageModel {
    */
   public ImageModelImpl(String filename) {
     this.image = imageData(readPPM(filename));
-    this.width = getPPMHeight(readPPM(filename));
-    this.height = getPPMWidth(readPPM(filename));
+    this.height = getPPMHeight(readPPM(filename));
+    this.width = getPPMWidth(readPPM(filename));
+  }
+
+  /**
+   *
+   * @param image
+   */
+  public ImageModelImpl(IPixel[][] image) {
+    this.image = image;
+    this.height = image.length;
+    this.width = image[0].length;
   }
 
   @Override
@@ -64,28 +70,13 @@ public class ImageModelImpl implements ImageModel {
   @Override
   public void save(String location, String name) {
     ImageModel model = load.get(name);
-    Path path = Paths.get(location);
-    String file = createPPM(model);
     try {
-      Files.writeString(path, file, StandardCharsets.UTF_8);
+      FileOutputStream fos = new FileOutputStream(location);
+      fos.write(createPPMFile(model.getImage(), model.getHeight(), model.getWidth()).getBytes());
+      fos.close();
     } catch (IOException e) {
-
+      System.out.println("File could not be Saved");
     }
-  }
-
-  private String createPPM(ImageModel m) {
-    StringBuilder build = new StringBuilder();
-    build.append("P3\n");
-    build.append(width + " " + height + "\n");
-    for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
-        build.append(image[i][j].getRed() + " ");
-        build.append(image[i][j].getGreen() + " ");
-        build.append(image[i][j].getBlue() + " ");
-      }
-      build.append("\n");
-    }
-    return build.toString();
   }
 
   @Override

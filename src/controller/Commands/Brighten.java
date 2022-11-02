@@ -27,12 +27,13 @@ public class Brighten implements ImageCommands {
 
   @Override
   public void execute(ImageModel m) {
+
     IPixel[][] newImage = new IPixel[m.getHeight()][m.getWidth()];
     for (int i = 0; i < m.getHeight(); i++) {
       for (int j = 0; j < m.getWidth(); j++) {
-        int newR = m.getImage()[i][j].getRed() + increment;
-        int newG = m.getImage()[i][j].getGreen() + increment;
-        int newB = m.getImage()[i][j].getBlue() + increment;
+        int newR = m.getPixels(i, j).getRed() + increment;
+        int newG = m.getPixels(i, j).getGreen() + increment;
+        int newB = m.getPixels(i, j).getBlue() + increment;
         newImage[i][j] = new PixelImpl(newR, newG, newB);
       }
     }

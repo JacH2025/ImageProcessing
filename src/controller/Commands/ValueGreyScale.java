@@ -3,13 +3,13 @@ package controller.Commands;
 import controller.ImageCommands;
 import model.IPixel;
 import model.ImageModel;
+import model.ImageModelImpl;
 import model.PixelImpl;
 
 /**
  *
  */
 public class ValueGreyScale implements ImageCommands {
-
   String imageName;
   String destImageName;
 
@@ -28,9 +28,11 @@ public class ValueGreyScale implements ImageCommands {
     IPixel[][] newImage = new IPixel[m.getHeight()][m.getWidth()];
     for (int i = 0; i < m.getHeight(); i++) {
       for (int j = 0; j < m.getWidth(); j++) {
-        int value = m.getImage()[i][j].getValue();
+        int value = m.getPixels(i, j).getValue();
         newImage[i][j] = new PixelImpl(value, value, value);
       }
     }
+    ImageModel model = new ImageModelImpl(newImage);
+    m.loadImage(model, destImageName);
   }
 }

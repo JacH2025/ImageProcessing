@@ -8,7 +8,6 @@ import model.ImageModel;
  *
  */
 public class HorizontalFlip implements ImageCommands {
-
   String imageName;
   String destImageName;
 
@@ -32,5 +31,6 @@ public class HorizontalFlip implements ImageCommands {
         x++;
       }
     }
+    m.loadImage(newImage.toString(), destImageName);
   }
 }

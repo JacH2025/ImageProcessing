@@ -9,7 +9,6 @@ import model.PixelImpl;
  *
  */
 public class IntensityGreyscale implements ImageCommands {
-
   String imageName;
   String destImageName;
 
@@ -28,7 +27,7 @@ public class IntensityGreyscale implements ImageCommands {
     IPixel[][] newImage = new IPixel[m.getHeight()][m.getWidth()];
     for (int i = 0; i < m.getHeight(); i++) {
       for (int j = 0; j < m.getWidth(); j++) {
-        int intensity = m.getImage()[i][j].getIntensity();
+        int intensity = m.getPixels(i, j).getIntensity();
         newImage[i][j] = new PixelImpl(intensity, intensity, intensity);
       }
     }
