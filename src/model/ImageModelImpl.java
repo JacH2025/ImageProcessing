@@ -54,7 +54,7 @@ public class ImageModelImpl implements ImageModel {
   }
 
   @Override
-  public ImageModel getImage(String name) {
+  public ImageModel getImageModel(String name) {
     ImageModel image = loadedImages.getOrDefault(name, null);
     if (image == null) {
       throw new IllegalArgumentException(String.format("image names %s has not been loaded", name));
@@ -79,8 +79,8 @@ public class ImageModelImpl implements ImageModel {
   }
 
   @Override
-  public void loadImage(ImageModel model, String name) {
-    loadedImages.put(name, model);
+  public void loadImage(ImageModel image, String name) {
+    this.loadedImages.put(name, image);
   }
 
   @Override

@@ -9,10 +9,12 @@ import java.io.FileNotFoundException;
 public interface ImageModel extends CommandImage {
 
   /**
-   * @param name
-   * @return
+   * returns an image with given name if such an image is loaded into the model.
+   *
+   * @param name name of image to get from model.
+   * @return ImageModel
    */
-  ImageModel getImage(String name);
+  ImageModel getImageModel(String name);
 
   /**
    * Returns a 2D array of IPixels that represents the
@@ -43,15 +45,16 @@ public interface ImageModel extends CommandImage {
   int getWidth();
 
   /**
-   * @param model
-   * @param name
+   * loads an image into the this image model.
+   *
+   * @param image image to load.
+   * @param name  name to give to loaded image in this model.
    */
-  void loadImage(ImageModel model, String name);
+  void loadImage(ImageModel image, String name);
 
   /**
-   * @param location
-   * @param name
-   * @throws FileNotFoundException
+   * @param location path to save to.
+   * @param name     to save as
    */
   void save(String location, String name);
 }

@@ -4,12 +4,11 @@ import java.io.InputStreamReader;
 import controller.ImageControllerImpl;
 
 public class ImageProgram {
-  public static void main(String []args) throws IOException {
+  public static void main(String[] args) throws IOException {
     String filename;
     if (args.length > 0) {
       filename = args[0];
-    }
-    else {
+    } else {
       filename = "sample.ppm";
     }
 

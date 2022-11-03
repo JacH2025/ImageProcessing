@@ -1,30 +1,34 @@
 package controller.Commands;
 
-import controller.ImageCommand;
+import java.util.Objects;
+
 import model.IPixel;
 import model.ImageModel;
 import model.ImageModelImpl;
 import model.PixelImpl;
 
-public class RGBGreyscale implements ImageCommand {
-  String color;
-  String imageName;
-  String destImageName;
+/**
+ * command to generate a greyscale image based on either the Red Blue or Green value of each pixel.
+ */
+public class RGBGreyscale extends AbstractCommand {
+  private final String color;
 
   /**
-   * @param color
-   * @param imageName
-   * @param destImageName
+   * default constructor for a command.
+   *
+   * @param color         must be either red blue or green
+   * @param imageName     name of image you want to brighten
+   * @param destImageName name of result image
    */
   public RGBGreyscale(String color, String imageName, String destImageName) {
-    this.color = color;
-    this.imageName = imageName;
-    this.destImageName = destImageName;
+    super(imageName, destImageName);
+    this.color = Objects.requireNonNull(color);
   }
+
 
   @Override
   public void execute(ImageModel m) {
-    ImageModel model = m.getImage(imageName);
+    ImageModel model = m.getImageModel(imageName);
     IPixel[][] newImage = new IPixel[model.getHeight()][model.getWidth()];
     for (int i = 0; i < model.getHeight(); i++) {
       for (int j = 0; j < model.getWidth(); j++) {

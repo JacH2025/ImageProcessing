@@ -1,23 +1,26 @@
 package controller.Commands;
 
+import java.util.Objects;
+
 import controller.ImageCommand;
 import model.ImageModel;
 
 /**
- *
+ * Command object to save an image.
  */
 public class Save implements ImageCommand {
-  String imagePath;
-  String imageName;
+  private String imagePath;
+  private String imageName;
 
   /**
+   * constructs a save command.
    *
-   * @param imagePath
-   * @param imageName
+   * @param imagePath path to image.
+   * @param imageName name to save image as.
    */
   public Save(String imagePath, String imageName) {
-    this.imagePath = imagePath;
-    this.imageName = imageName;
+    this.imagePath = Objects.requireNonNull(imagePath);
+    this.imageName = Objects.requireNonNull(imageName);
   }
 
   @Override

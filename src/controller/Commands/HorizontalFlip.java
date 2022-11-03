@@ -1,30 +1,29 @@
 package controller.Commands;
 
-import controller.ImageCommand;
+
 import model.IPixel;
 import model.ImageModel;
 import model.ImageModelImpl;
 
 /**
- *
+ * Command to Flip an image horizontally.
  */
-public class HorizontalFlip implements ImageCommand {
-  String imageName;
-  String destImageName;
+public class HorizontalFlip extends AbstractCommand  {
+
 
   /**
+   * constructor for a Brighten command.
    *
-   * @param imageName
-   * @param destImageName
+   * @param imageName     name of image you want to brighten
+   * @param destImageName name of result image
    */
   public HorizontalFlip(String imageName, String destImageName) {
-    this.imageName = imageName;
-    this.destImageName = destImageName;
+    super(imageName, destImageName);
   }
 
   @Override
   public void execute(ImageModel m) {
-    ImageModel model = m.getImage(imageName);
+    ImageModel model = m.getImageModel(imageName);
     IPixel[][] newImage = new IPixel[model.getHeight()][model.getWidth()];
     for (int i = 0; i < model.getHeight(); i++) {
       int x = 1;

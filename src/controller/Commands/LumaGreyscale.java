@@ -1,31 +1,29 @@
 package controller.Commands;
 
-import controller.ImageCommand;
 import model.IPixel;
 import model.ImageModel;
 import model.ImageModelImpl;
 import model.PixelImpl;
 
 /**
- *
+ * command to generate a greyscale image based on the Luma value of each pixel.
  */
-public class LumaGreyscale implements ImageCommand {
-  String imageName;
-  String destImageName;
+public class LumaGreyscale extends AbstractCommand {
+
 
   /**
+   * default constructor for a command.
    *
-   * @param imageName
-   * @param destImageName
+   * @param imageName     name of image you want to brighten
+   * @param destImageName name of result image
    */
   public LumaGreyscale(String imageName, String destImageName) {
-    this.imageName = imageName;
-    this.destImageName = destImageName;
+    super(imageName, destImageName);
   }
 
   @Override
   public void execute(ImageModel m) {
-    ImageModel model = m.getImage(imageName);
+    ImageModel model = m.getImageModel(imageName);
     IPixel[][] newImage = new IPixel[model.getHeight()][model.getWidth()];
     for (int i = 0; i < model.getHeight(); i++) {
       for (int j = 0; j < model.getWidth(); j++) {

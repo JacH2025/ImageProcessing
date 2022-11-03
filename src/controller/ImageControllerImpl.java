@@ -116,6 +116,7 @@ public class ImageControllerImpl implements ImageController {
       try {
         c = cmd.apply(sc);
         model.execute(c);
+        writeMessage(instruction + " executed" + System.lineSeparator());
       } catch (Exception e) {
         writeMessage("command failed");
       }

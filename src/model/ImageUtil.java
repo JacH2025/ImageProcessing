@@ -5,14 +5,13 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * This class contains utility methods to read a PPM image from file and
- * construct the image data.
+ * This class contains utility methods to read a PPM image from file and construct the image data.
  */
 public class ImageUtil {
 
   /**
-   * Read an image file in the PPM format and creates a string that allows
-   * other methods to parse through the contents.
+   * Read an image file in the PPM format and creates a string that allows other methods to parse
+   * through the contents.
    *
    * @param filename the path of the file
    * @return String contents of the file formatted
@@ -27,7 +26,9 @@ public class ImageUtil {
     }
 
     StringBuilder builder = new StringBuilder();
-    while (sc.hasNextLine()) {
+    while (true) {
+      assert sc != null;
+      if (!sc.hasNextLine()) break;
       String s = sc.nextLine();
       if (s.charAt(0) != '#') {
         builder.append(s).append(System.lineSeparator());
@@ -37,12 +38,12 @@ public class ImageUtil {
   }
 
   /**
-   * Given the contents of a PPM file, creates a 2D array that contains
-   * the coordinates of each pixel, and the RGB values represented as IPixels.
+   * Given the contents of a PPM file, creates a 2D array that contains the coordinates of each
+   * pixel, and the RGB values represented as IPixels.
    *
    * @param contents the contents of a file formatted
-   * @return IPixel[][] a 2D array that contains the coordinates of each pixel
-   *                    and the RGB values of each pixel
+   * @return IPixel[][] a 2D array that contains the coordinates of each pixel and the RGB values of
+   * each pixel
    */
   public static IPixel[][] imageData(String contents) {
     Scanner sc;
@@ -104,14 +105,13 @@ public class ImageUtil {
   }
 
   /**
-   * Given the information of an image, format a string into the format of a
-   * PPM File that includes the file type "P3", the width and height in order,
-   * the max color value, and the rest of the pixels represented by a triplet of
-   * Red, Green, and Blue values in order.
+   * Given the information of an image, format a string into the format of a PPM File that includes
+   * the file type "P3", the width and height in order, the max color value, and the rest of the
+   * pixels represented by a triplet of Red, Green, and Blue values in order.
    *
-   * @param image image data
+   * @param image  image data
    * @param height height of the image
-   * @param width width of the image
+   * @param width  width of the image
    * @return String formatted as a PPM File
    */
   public static String createPPMFile(IPixel[][] image, int height, int width) {

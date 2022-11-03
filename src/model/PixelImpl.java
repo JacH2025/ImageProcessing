@@ -9,16 +9,17 @@ public class PixelImpl implements IPixel {
   private final int b;
 
   /**
-   * Constructs the RGB values for a single Pixel.
+   * Constructs the RGB values for a single Pixel. values less than 0 are set to 0 and values
+   * greater then 255 are set to 255;
    *
    * @param r red color value
    * @param g green color value
    * @param b blue color value
    */
   public PixelImpl(int r, int g, int b) {
-    this.r = r;
-    this.g = g;
-    this.b = b;
+    this.r = cap(r);
+    this.g = cap(g);
+    this.b = cap(b);
   }
 
   @Override
@@ -52,9 +53,7 @@ public class PixelImpl implements IPixel {
   }
 
   /**
-   *
-   * @param value
-   * @return
+   * ensures values are between 0 and 255.
    */
   private int cap(int value) {
     if (value < 0) {
