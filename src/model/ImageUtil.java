@@ -17,12 +17,13 @@ public class ImageUtil {
    * @return String contents of the file formatted
    */
   public static String readPPM(String filename) {
-    Scanner sc = null;
+    Scanner sc;
 
     try {
       sc = new Scanner(new FileInputStream(filename));
     } catch (FileNotFoundException e) {
       System.out.println("File " + filename + " not found!");
+      throw new IllegalArgumentException("File " + filename + " not found!");
     }
 
     StringBuilder builder = new StringBuilder();
@@ -100,7 +101,7 @@ public class ImageUtil {
     token = sc.next();
     if (!token.equals("P3")) {
       System.out.println("Invalid PPM file: plain RAW file should begin with P3");
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException("Invalid PPM file: plain RAW file should begin with P3");
     }
   }
 

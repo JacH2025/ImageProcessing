@@ -1,5 +1,6 @@
 package model;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -39,13 +40,9 @@ public class ImageModelImpl implements ImageModel {
    * @param filename file name or path
    */
   public ImageModelImpl(String filename) {
-    try {
-      this.image = imageData(readPPM(filename));
-      this.height = getPPMHeight(readPPM(filename));
-      this.width = getPPMWidth(readPPM(filename));
-    } catch (Exception e) {
-      throw new IllegalArgumentException(e.getMessage());
-    }
+    this.image = imageData(readPPM(filename));
+    this.height = getPPMHeight(readPPM(filename));
+    this.width = getPPMWidth(readPPM(filename));
   }
 
   /**

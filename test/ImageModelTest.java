@@ -1,11 +1,16 @@
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
+
+import controller.ImageControllerImpl;
+import model.IPixel;
 import model.ImageModel;
 import model.ImageModelImpl;
 import model.PixelImpl;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.fail;
 
 /**
@@ -17,7 +22,11 @@ public class ImageModelTest {
 
   @Test
   public void testConstructorExceptions() {
-
+    assertThrows(IllegalArgumentException.class,
+        () -> new ImageModelImpl("res/ImageDoesNotExist"));
+    IPixel[][] empty = null;
+    assertThrows(IllegalArgumentException.class,
+        () -> new ImageModelImpl(empty));
   }
 
   @Test
