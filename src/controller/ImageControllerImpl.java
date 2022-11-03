@@ -20,15 +20,13 @@ import model.ImageModel;
 import model.ImageModelImpl;
 
 /**
- * Controller for our Image processor. uses a command pattern.
+ * Controller for our Image processor. Uses a command pattern.
  */
 public class ImageControllerImpl implements ImageController {
   private final ImageModel model;
   private final Readable input;
   private final Appendable output;
-
-  private Map<String, Function<Scanner, ImageCommand>> commands;
-
+  private final Map<String, Function<Scanner, ImageCommand>> commands;
 
   /**
    * Basic constructor for a Image controller. starts with a new image model.
@@ -43,7 +41,7 @@ public class ImageControllerImpl implements ImageController {
       this.input = Objects.requireNonNull(input);
       this.output = Objects.requireNonNull(output);
     } catch (Exception e) {
-      throw new IllegalArgumentException("input cannot be null");
+      throw new IllegalArgumentException("Cannot be null");
     }
     this.commands = new HashMap<>();
     initializeCommands();
@@ -72,7 +70,6 @@ public class ImageControllerImpl implements ImageController {
         , (Scanner s) -> new RGBGreyscale("blue", s.next(), s.next()));
     commands.put("green-component"
         , (Scanner s) -> new RGBGreyscale("green", s.next(), s.next()));
-
   }
 
   @Override
@@ -85,7 +82,7 @@ public class ImageControllerImpl implements ImageController {
       String instruction = sc.next();
       if (instruction.equals("quit") || instruction.equals("q")) {
         quit = true;
-        writeMessage("bye bye");
+        writeMessage("Bye Bye");
       } else if (instruction.equalsIgnoreCase("help") ||
           instruction.equalsIgnoreCase("h")) {
         printHelp();
@@ -111,7 +108,7 @@ public class ImageControllerImpl implements ImageController {
     ImageCommand c;
     Function<Scanner, ImageCommand> cmd = commands.getOrDefault(instruction, null);
     if (cmd == null) {
-      writeMessage("unrecognized Input" + System.lineSeparator());
+      writeMessage("unrecognized input" + System.lineSeparator());
     } else {
       try {
         c = cmd.apply(sc);
@@ -133,9 +130,9 @@ public class ImageControllerImpl implements ImageController {
 
   private void printHelp() {
     StringBuilder helpMenu = new StringBuilder();
-    helpMenu.append("this image processor supports the following operations")
+    helpMenu.append("This image processor supports the following operations")
         .append(System.lineSeparator());
-    helpMenu.append("commands:Arguments")
+    helpMenu.append("Commands: Arguments")
         .append(System.lineSeparator());
     helpMenu.append("load: imagePath, imageName")
         .append(System.lineSeparator());
@@ -159,22 +156,14 @@ public class ImageControllerImpl implements ImageController {
         .append(System.lineSeparator());
     helpMenu.append("green-component: imageName, destinationImageName")
         .append(System.lineSeparator());
-
-
     writeMessage(helpMenu.toString());
-
   }
 
   private void welcomeMessage() {
-
     StringBuilder welcomeMessage = new StringBuilder();
-    welcomeMessage.append("Welcome to our Image processor :)")
-        .append(System.lineSeparator());
-    welcomeMessage.append("enter help or h for a list of commands.").append(System.lineSeparator());
-    welcomeMessage.append("enter quit or q to exit.").append(System.lineSeparator());
-
-
+    welcomeMessage.append("Welcome to our Image processor :)").append(System.lineSeparator());
+    welcomeMessage.append("Enter help or h for a list of commands.").append(System.lineSeparator());
+    welcomeMessage.append("Enter quit or q to exit.").append(System.lineSeparator());
     writeMessage(welcomeMessage.toString());
-
   }
 }

@@ -1,8 +1,8 @@
 package model;
 
 /**
- * Interface for rgb pixels. includes operations to retrieve individual components, and values which
- * are composites of several components.
+ * Interface for rgb pixels. Includes operations to retrieve individual components,
+ * and values which are composites of several components.
  */
 public interface IPixel {
 

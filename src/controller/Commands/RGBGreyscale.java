@@ -8,16 +8,16 @@ import model.ImageModelImpl;
 import model.PixelImpl;
 
 /**
- * command to generate a greyscale image based on either the Red Blue or Green value of each pixel.
+ * Command to generate a greyscale image based on either the Red Blue or Green value of each pixel.
  */
 public class RGBGreyscale extends AbstractCommand {
   private final String color;
 
   /**
-   * default constructor for a command.
+   * Constructor for RGB Greyscale command.
    *
    * @param color         must be either red blue or green
-   * @param imageName     name of image you want to brighten
+   * @param imageName     name of image to greyscale
    * @param destImageName name of result image
    */
   public RGBGreyscale(String color, String imageName, String destImageName) {

@@ -1,20 +1,18 @@
 package controller.Commands;
 
-
 import model.IPixel;
 import model.ImageModel;
 import model.ImageModelImpl;
 
 /**
- * Command to Flip an image horizontally.
+ * Command to generate a horizontally flipped image.
  */
 public class HorizontalFlip extends AbstractCommand  {
 
-
   /**
-   * constructor for a Brighten command.
+   * Constructor for Horizontal Flip command.
    *
-   * @param imageName     name of image you want to brighten
+   * @param imageName     name of image to horizontally flip
    * @param destImageName name of result image
    */
   public HorizontalFlip(String imageName, String destImageName) {

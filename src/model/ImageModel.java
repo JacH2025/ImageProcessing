@@ -1,8 +1,5 @@
 package model;
 
-import java.awt.*;
-import java.io.FileNotFoundException;
-
 /**
  *
  */
@@ -18,6 +15,8 @@ public interface ImageModel extends CommandImage {
 
   /**
    * Returns a 2D array of IPixels that represents the
+   *
+   * @return IPixel[][]
    */
   IPixel[][] getImage();
 
@@ -45,7 +44,7 @@ public interface ImageModel extends CommandImage {
   int getWidth();
 
   /**
-   * loads an image into the this image model.
+   * Loads an image into the image model.
    *
    * @param image image to load.
    * @param name  name to give to loaded image in this model.
@@ -53,6 +52,8 @@ public interface ImageModel extends CommandImage {
   void loadImage(ImageModel image, String name);
 
   /**
+   *
+   *
    * @param location path to save to.
    * @param name     to save as
    */

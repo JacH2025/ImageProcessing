@@ -8,7 +8,7 @@ import controller.ImageCommand;
 public interface CommandImage {
 
   /**
-   * executes ImageCommand c on this.
+   * Executes ImageCommand c on this.
    *
    * @param c ImageCommand
    */

@@ -22,7 +22,7 @@ public class ImageModelImpl implements ImageModel {
   private final HashMap<String, ImageModel> loadedImages = new HashMap<>();
 
   /**
-   *
+   * Constructor for an Empty model that contains no images or data.
    */
   public ImageModelImpl() {
     this.image = null;
@@ -31,7 +31,9 @@ public class ImageModelImpl implements ImageModel {
   }
 
   /**
-   * @param filename
+   * Constructor that takes in a file and takes the data from the file.
+   *
+   * @param filename file name or path
    */
   public ImageModelImpl(String filename) {
     this.image = imageData(readPPM(filename));
@@ -40,7 +42,10 @@ public class ImageModelImpl implements ImageModel {
   }
 
   /**
-   * @param image
+   * Constructor that takes in an image's data and constructs a model
+   * based on the given data
+   *
+   * @param image array of pixels
    */
   public ImageModelImpl(IPixel[][] image) {
     this.image = image;
@@ -58,7 +63,6 @@ public class ImageModelImpl implements ImageModel {
     ImageModel image = loadedImages.getOrDefault(name, null);
     if (image == null) {
       throw new IllegalArgumentException(String.format("image names %s has not been loaded", name));
-
     }
     return image;
   }

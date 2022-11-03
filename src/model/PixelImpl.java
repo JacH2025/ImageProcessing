@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Represents a Pixel with r g b values.
+ * Represents a Pixel with rgb values.
  */
 public class PixelImpl implements IPixel {
   private final int r;
@@ -9,8 +9,8 @@ public class PixelImpl implements IPixel {
   private final int b;
 
   /**
-   * Constructs the RGB values for a single Pixel. values less than 0 are set to 0 and values
-   * greater then 255 are set to 255;
+   * Constructs the RGB values for a single Pixel. Values less than 0 are set to 0 and values
+   * greater than 255 are set to 255;
    *
    * @param r red color value
    * @param g green color value
@@ -53,7 +53,9 @@ public class PixelImpl implements IPixel {
   }
 
   /**
-   * ensures values are between 0 and 255.
+   * Ensures values are between 0 and 255.
+   *
+   * @return int value of the rgb
    */
   private int cap(int value) {
     if (value < 0) {

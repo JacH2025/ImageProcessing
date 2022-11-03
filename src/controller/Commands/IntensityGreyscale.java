@@ -7,14 +7,14 @@ import model.ImageModelImpl;
 import model.PixelImpl;
 
 /**
- * command to generate a greyscale image based on the intensity value of each pixel.
+ * Command to generate a greyscale image based on the intensity value of each pixel.
  */
 public class IntensityGreyscale extends AbstractCommand {
 
   /**
-   * default constructor for a command.
+   * Constructor for Intensity Greyscale command.
    *
-   * @param imageName     name of image you want to brighten
+   * @param imageName     name of image to greyscale
    * @param destImageName name of result image
    */
   public IntensityGreyscale(String imageName, String destImageName) {

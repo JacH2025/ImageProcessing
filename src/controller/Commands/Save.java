@@ -13,10 +13,10 @@ public class Save implements ImageCommand {
   private String imageName;
 
   /**
-   * constructs a save command.
+   * Constructs a Save command.
    *
-   * @param imagePath path to image.
-   * @param imageName name to save image as.
+   * @param imagePath path to image file
+   * @param imageName the image to save from models
    */
   public Save(String imagePath, String imageName) {
     this.imagePath = Objects.requireNonNull(imagePath);

@@ -1,17 +1,19 @@
 package controller.Commands;
 
 import java.util.Objects;
-
 import controller.ImageCommand;
 
+/**
+ * Abstract base class for implementations of {@link ImageCommand}.
+ */
 public abstract class AbstractCommand implements ImageCommand {
   protected final String imageName;
   protected final String destImageName;
 
   /**
-   * default constructor for a command.
+   * Default constructor for a command.
    *
-   * @param imageName     name of image you want to brighten
+   * @param imageName     name of image to instruct
    * @param destImageName name of result image
    */
   public AbstractCommand(String imageName, String destImageName) {

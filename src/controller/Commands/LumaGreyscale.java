@@ -6,15 +6,14 @@ import model.ImageModelImpl;
 import model.PixelImpl;
 
 /**
- * command to generate a greyscale image based on the Luma value of each pixel.
+ * Command to generate a greyscale image based on the Luma value of each pixel.
  */
 public class LumaGreyscale extends AbstractCommand {
 
-
   /**
-   * default constructor for a command.
+   * Constructor for Luma Greyscale command.
    *
-   * @param imageName     name of image you want to brighten
+   * @param imageName     name of image to greyscale
    * @param destImageName name of result image
    */
   public LumaGreyscale(String imageName, String destImageName) {

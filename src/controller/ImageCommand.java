@@ -8,7 +8,7 @@ import model.ImageModel;
 public interface ImageCommand {
 
   /**
-   * executes command on image model m.
+   * Executes command on image model m.
    *
    * @param m ImageModel
    */

@@ -5,14 +5,14 @@ import model.ImageModel;
 import model.ImageModelImpl;
 
 /**
- * command to generate a vertically flipped image.
+ * Command to generate a vertically flipped image.
  */
 public class VerticalFlip extends AbstractCommand {
 
   /**
-   * default constructor for a command.
+   * Constructor for Vertical Flip command.
    *
-   * @param imageName     name of image you want to brighten
+   * @param imageName     name of image to vertically flip
    * @param destImageName name of result image
    */
   public VerticalFlip(String imageName, String destImageName) {

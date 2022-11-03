@@ -6,13 +6,13 @@ import model.ImageModelImpl;
 import model.PixelImpl;
 
 /**
- * The command will increase the rgb values of every pixel of an image by the increment given.
+ * Command to increase the rgb values of every pixel of an image by the increment given.
  */
 public class Brighten extends AbstractCommand {
   private final int increment;
 
   /**
-   * constructor for a Brighten command.
+   * Constructor for Brighten command.
    *
    * @param imageName     name of image you want to brighten
    * @param destImageName name of result image

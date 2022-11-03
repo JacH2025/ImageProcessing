@@ -1,19 +1,20 @@
 package controller.Commands;
 
 import java.util.Objects;
-
 import controller.ImageCommand;
 import model.ImageModel;
 import model.ImageModelImpl;
 
 /**
- * command to load an image onto a ImageModel.
+ * Command to load an image onto an ImageModel.
  */
 public class Load implements ImageCommand {
   private String imagePath;
   private String imageName;
 
   /**
+   * Constructor for Load Command.
+   *
    * @param imagePath path to image to load.
    * @param imageName name to load image with
    */
