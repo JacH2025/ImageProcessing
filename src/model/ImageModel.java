@@ -51,10 +51,10 @@ public interface ImageModel extends CommandImage {
    */
   void loadImage(ImageModel image, String name);
 
-  /**
+  /** attempts to save an image to the location given.
    *
    *
-   * @param location path to save to.
+   * @param location path to save file to
    * @param name     to save as
    */
   void save(String location, String name);
