@@ -9,8 +9,8 @@ import model.ImageModel;
  * Command object to save an image.
  */
 public class Save implements ImageCommand {
-  private String imagePath;
-  private String imageName;
+  private final String imagePath;
+  private final String imageName;
 
   /**
    * Constructs a Save command.

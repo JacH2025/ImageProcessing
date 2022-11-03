@@ -41,7 +41,7 @@ public class ImageControllerImpl implements ImageController {
       this.input = Objects.requireNonNull(input);
       this.output = Objects.requireNonNull(output);
     } catch (Exception e) {
-      throw new IllegalArgumentException("Cannot be null");
+      throw new IllegalArgumentException("input or output cannot be null");
     }
     this.commands = new HashMap<>();
     initializeCommands();

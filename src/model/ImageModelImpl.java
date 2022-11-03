@@ -3,6 +3,7 @@ package model;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Objects;
 
 import controller.ImageCommand;
 
@@ -13,7 +14,9 @@ import static model.ImageUtil.getPPMHeight;
 import static model.ImageUtil.getPPMWidth;
 
 /**
- *
+ * ImageModelImpl implements ImageModel. This model contains a 2D array of IPixels which is an image
+ * representation. It also contains HashMap of images associated with String names. images can be
+ * loaded into this HashMap, and have Commands executed on them.
  */
 public class ImageModelImpl implements ImageModel {
   private final IPixel[][] image;
@@ -36,19 +39,26 @@ public class ImageModelImpl implements ImageModel {
    * @param filename file name or path
    */
   public ImageModelImpl(String filename) {
-    this.image = imageData(readPPM(filename));
-    this.height = getPPMHeight(readPPM(filename));
-    this.width = getPPMWidth(readPPM(filename));
+    try {
+      this.image = imageData(readPPM(filename));
+      this.height = getPPMHeight(readPPM(filename));
+      this.width = getPPMWidth(readPPM(filename));
+    } catch (Exception e) {
+      throw new IllegalArgumentException(e.getMessage());
+    }
   }
 
   /**
-   * Constructor that takes in an image's data and constructs a model
-   * based on the given data
+   * Constructor that takes in an image's data and constructs a model based on the given data
    *
    * @param image array of pixels
    */
   public ImageModelImpl(IPixel[][] image) {
-    this.image = image;
+    try {
+      this.image = Objects.requireNonNull(image);
+    } catch (Exception e) {
+      throw new IllegalArgumentException("image cannot be null");
+    }
     this.height = image.length;
     this.width = image[0].length;
   }
@@ -62,7 +72,7 @@ public class ImageModelImpl implements ImageModel {
   public ImageModel getImageModel(String name) {
     ImageModel image = loadedImages.getOrDefault(name, null);
     if (image == null) {
-      throw new IllegalArgumentException(String.format("image names %s has not been loaded", name));
+      throw new IllegalArgumentException(String.format("image named %s has not been loaded", name));
     }
     return image;
   }
