@@ -12,7 +12,6 @@ public class RGBGreyscale implements ImageCommands {
   String destImageName;
 
   /**
-   *
    * @param color
    * @param imageName
    * @param destImageName
@@ -40,6 +39,9 @@ public class RGBGreyscale implements ImageCommands {
           case "blue":
             value = model.getPixel(i, j).getBlue();
             break;
+          default:
+            throw new IllegalArgumentException("color must be one of: red, blue , green");
+
         }
         newImage[i][j] = new PixelImpl(value, value, value);
       }

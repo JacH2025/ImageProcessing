@@ -81,7 +81,7 @@ public class ImageModelImpl implements ImageModel {
   }
 
   @Override
-  public void save(String location, String name) {
+  public void save(String location, String name) throws IllegalArgumentException {
     if (!(location.substring(location.length() - 4)).equalsIgnoreCase(".ppm")) {
       throw new IllegalArgumentException("File Name does not end with .ppm");
     }
