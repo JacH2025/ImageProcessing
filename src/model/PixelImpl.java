@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 /**
  * Represents a Pixel with rgb values.
  */
@@ -64,5 +66,22 @@ public class PixelImpl implements IPixel {
       value = 255;
     }
     return value;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof PixelImpl)) {
+      return false;
+    }
+    PixelImpl other = (PixelImpl) o;
+    return this.r == other.r && this.g == other.g && this.b == other.b;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.r, this.g, this.b);
   }
 }

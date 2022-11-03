@@ -1,10 +1,5 @@
 import org.junit.Test;
 
-import java.awt.*;
-
-import controller.Commands.Brighten;
-import controller.ImageCommand;
-import model.IPixel;
 import model.ImageModel;
 import model.ImageModelImpl;
 

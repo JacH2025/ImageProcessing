@@ -5,6 +5,7 @@ import controller.ImageCommand;
 import model.IPixel;
 import model.ImageModel;
 import model.ImageModelImpl;
+import model.PixelImpl;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,6 +21,14 @@ public class ImageCommandTest {
     ImageCommand c = new Brighten(50, "6Color", "6Color-brighten");
     c.execute(storage);
     IPixel[][] pixels = storage.getImageModel("6Color-brighten").getImage();
+
+    assertEquals(new PixelImpl(255, 50, 50), pixels[0][0]);
+    assertEquals(new PixelImpl(50, 255, 50), pixels[0][1]);
+    assertEquals(new PixelImpl(50, 50, 255), pixels[0][2]);
+    assertEquals(new PixelImpl(255, 255, 50), pixels[1][0]);
+    assertEquals(new PixelImpl(255, 255, 255), pixels[0]);
+    assertEquals(new PixelImpl(50, 50, 50), pixels[0]);
+
 
     assertEquals(255, pixels[0][0].getRed());
     assertEquals(50, pixels[0][0].getGreen());
