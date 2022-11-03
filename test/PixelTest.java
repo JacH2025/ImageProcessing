@@ -6,7 +6,7 @@ import model.PixelImpl;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Tests for {@link PixelImpl}.
+ * Tests for {@link IPixel}.
  */
 public class PixelTest {
   IPixel white = new PixelImpl(255, 255, 255);
@@ -20,7 +20,10 @@ public class PixelTest {
 
   @Test
   public void testConstructorAdjustments() {
-
+    IPixel color = new PixelImpl(300, -10, 100);
+    assertEquals(255, color.getRed());
+    assertEquals(0, color.getGreen());
+    assertEquals(100, color.getBlue());
   }
 
   @Test

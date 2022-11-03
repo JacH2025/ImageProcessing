@@ -68,4 +68,35 @@ public class ImageControllerTest {
 
     assertEquals(expected, output.toString());
   }
+
+  @Test
+  public void testCheckStatementAfterCommand() {
+    Appendable instruct = new StringBuilder("load res/6color.ppm 6Color");
+    Readable input = new StringReader(instruct.toString());
+    Appendable output = new StringBuilder();
+    ImageController controller = new ImageControllerImpl(input, output);
+    String expected = "Welcome to our Image processor :)\n" +
+        "Enter help or h for a list of commands.\n" +
+        "Enter quit or q to exit.\n" +
+        "load executed\n";
+
+    controller.run();
+    assertEquals(expected, output.toString());
+  }
+
+  @Test
+  public void testInvalidInputException() {
+    Appendable instruct = new StringBuilder("load res/6color.ppm 6Color\n" +
+        "save res/new-6Color 6Color\n");
+    Readable input = new StringReader(instruct.toString());
+    Appendable output = new StringBuilder();
+    ImageController controller = new ImageControllerImpl(input, output);
+    String expected = "Welcome to our Image processor :)\n" +
+        "Enter help or h for a list of commands.\n" +
+        "Enter quit or q to exit.\n" +
+        "load executed\n" +
+        "command failed";
+    controller.run();
+    assertEquals(expected, output.toString());
+  }
 }
