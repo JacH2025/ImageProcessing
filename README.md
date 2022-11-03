@@ -11,7 +11,7 @@ ImageModel Impl is our main image processor model. It has methods to load images
 save images that are currently in the model to the desired location.
 ImageModel extends CommandImage which ensures that any implementation is able to apply ImageCommands
 to images in the model. The model contains some methods that return information on the current 
-image, so that thecommands can access individual pixels, and know the height and width to iterate 
+image, so that the commands can access individual pixels, and know the height and width to iterate 
 over.
 
 
@@ -47,7 +47,7 @@ and then the command will load the altered image into the model with the desired
 <p>
 Our controller uses a command pattern, so the only built in commands are the help and quit commands.
 The rest of the commands are stored in:
-a Map &lt String, Function &lt Scanner, ImageCommand&gt&gt commands &NewLine;
+a &#40Map &lt String, Function &lt Scanner, ImageCommand&gt&gt commands&#41 &NewLine;
 when the controller gets an input it checks if it is either quit or help, and then checks if the 
 input is contained in the commands Map. If it is it will attempt to execute the command with the 
 next user inputs. on success or failure it will alert the user, and then wait to accept the next
