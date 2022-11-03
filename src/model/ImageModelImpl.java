@@ -1,6 +1,5 @@
 package model;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -46,7 +45,7 @@ public class ImageModelImpl implements ImageModel {
   }
 
   /**
-   * Constructor that takes in an image's data and constructs a model based on the given data
+   * Constructor that takes in an image's data and constructs a model based on the given data.
    *
    * @param image array of pixels
    */

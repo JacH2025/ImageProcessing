@@ -1,8 +1,5 @@
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
-
-import controller.ImageControllerImpl;
 import model.IPixel;
 import model.ImageModel;
 import model.ImageModelImpl;

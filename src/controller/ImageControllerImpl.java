@@ -7,15 +7,15 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.function.Function;
 
-import controller.Commands.Brighten;
-import controller.Commands.HorizontalFlip;
-import controller.Commands.IntensityGreyscale;
-import controller.Commands.Load;
-import controller.Commands.LumaGreyscale;
-import controller.Commands.RGBGreyscale;
-import controller.Commands.Save;
-import controller.Commands.ValueGreyScale;
-import controller.Commands.VerticalFlip;
+import controller.commands.Brighten;
+import controller.commands.HorizontalFlip;
+import controller.commands.IntensityGreyscale;
+import controller.commands.Load;
+import controller.commands.LumaGreyscale;
+import controller.commands.RGBGreyscale;
+import controller.commands.Save;
+import controller.commands.ValueGreyScale;
+import controller.commands.VerticalFlip;
 import model.ImageModel;
 import model.ImageModelImpl;
 
@@ -146,8 +146,8 @@ public class ImageControllerImpl implements ImageController {
         .append(System.lineSeparator());
     helpMenu.append("intensity-greyscale: imageName, destinationImageName")
         .append(System.lineSeparator());
-    helpMenu.append("luma-greyscale: imageName, destinationImageName").
-        append(System.lineSeparator());
+    helpMenu.append("luma-greyscale: imageName, destinationImageName")
+        .append(System.lineSeparator());
     helpMenu.append("value-greyscale: imageName, destinationImageName")
         .append(System.lineSeparator());
     helpMenu.append("red-component: imageName, destinationImageName")

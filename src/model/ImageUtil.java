@@ -29,7 +29,9 @@ public class ImageUtil {
     StringBuilder builder = new StringBuilder();
     while (true) {
       assert sc != null;
-      if (!sc.hasNextLine()) break;
+      if (!sc.hasNextLine()) {
+        break;
+      }
       String s = sc.nextLine();
       if (s.charAt(0) != '#') {
         builder.append(s).append(System.lineSeparator());
@@ -44,7 +46,7 @@ public class ImageUtil {
    *
    * @param contents the contents of a file formatted
    * @return IPixel[][] a 2D array that contains the coordinates of each pixel and the RGB values of
-   * each pixel
+   *         each pixel
    */
   public static IPixel[][] imageData(String contents) {
     Scanner sc;
