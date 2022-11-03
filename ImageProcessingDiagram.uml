@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/Users/jackhuang/Documents/CS3500/ImageProcessing/src</OriginalElement>
+  <nodes>
+    <node x="687.0000000000001" y="64.0">controller.Commands.Save</node>
+    <node x="-100.0" y="142.0">controller.Commands.VerticalFlip</node>
+    <node x="745.0000000000001" y="142.0">controller.Commands.RGBGreyscale</node>
+    <node x="132.5" y="215.0">controller.ImageController</node>
+    <node x="361.0" y="293.0">model.PixelImpl</node>
+    <node x="538.0000000000001" y="-14.0">controller.ImageCommand</node>
+    <node x="-100.0" y="371.0">model.ImageModelImpl</node>
+    <node x="184.0000000000001" y="142.0">controller.Commands.IntensityGreyscale</node>
+    <node x="725.0" y="215.0">model.ImageUtil</node>
+    <node x="-99.5" y="215.0">model.CommandImage</node>
+    <node x="522.0" y="215.0">ImageProgram</node>
+    <node x="390.0000000000001" y="142.0">controller.Commands.HorizontalFlip</node>
+    <node x="51.000000000000114" y="142.0">controller.Commands.Brighten</node>
+    <node x="371.0000000000001" y="64.0">controller.Commands.AbstractCommand</node>
+    <node x="561.0000000000001" y="142.0">controller.Commands.LumaGreyscale</node>
+    <node x="374.5" y="215.0">model.IPixel</node>
+    <node x="117.0" y="293.0">controller.ImageControllerImpl</node>
+    <node x="580.0000000000001" y="64.0">controller.Commands.Load</node>
+    <node x="921.0000000000001" y="142.0">controller.Commands.ValueGreyScale</node>
+    <node x="-84.5" y="293.0">model.ImageModel</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="model.ImageModel" target="model.CommandImage" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.Commands.Load" target="controller.ImageCommand" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.Commands.HorizontalFlip" target="controller.Commands.AbstractCommand" relationship="GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.ImageControllerImpl" target="controller.ImageController" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.Commands.VerticalFlip" target="controller.Commands.AbstractCommand" relationship="GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-34.5" y="117.0" />
+      <point x="465.5000000000001" y="117.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.Commands.LumaGreyscale" target="controller.Commands.AbstractCommand" relationship="GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="643.0000000000001" y="117.0" />
+      <point x="465.5000000000001" y="117.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="model.PixelImpl" target="model.IPixel" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.Commands.Save" target="controller.ImageCommand" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="730.0000000000001" y="39.0" />
+      <point x="623.5000000000001" y="39.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.Commands.AbstractCommand" target="controller.ImageCommand" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="465.5000000000001" y="39.0" />
+      <point x="623.5000000000001" y="39.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.Commands.ValueGreyScale" target="controller.Commands.AbstractCommand" relationship="GENERALIZATION">
+      <point x="-1.1368683772161603E-13" y="-14.0" />
+      <point x="1003.5" y="117.0" />
+      <point x="465.5000000000001" y="117.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.Commands.RGBGreyscale" target="controller.Commands.AbstractCommand" relationship="GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="823.0000000000001" y="117.0" />
+      <point x="465.5000000000001" y="117.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="model.ImageModelImpl" target="model.ImageModel" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.Commands.Brighten" target="controller.Commands.AbstractCommand" relationship="GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="107.50000000000011" y="117.0" />
+      <point x="465.5000000000001" y="117.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.Commands.IntensityGreyscale" target="controller.Commands.AbstractCommand" relationship="GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="277.0000000000001" y="117.0" />
+      <point x="465.5000000000001" y="117.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.8164479167244554" showDependencies="false" x="510.7687770128249" y="206.59626424312594" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
