@@ -19,7 +19,7 @@ public class Brighten extends AbstractCommand {
    * @param increment     to brighten by
    */
   public Brighten(int increment, String imageName, String destImageName) {
-    super(imageName,destImageName);
+    super(imageName, destImageName);
     this.increment = increment;
   }
 

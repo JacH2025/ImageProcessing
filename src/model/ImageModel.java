@@ -1,7 +1,8 @@
 package model;
 
 /**
- *
+ * Interface for our image processor. extends CommandImage so that commands can be executed on
+ * ImageModel implementations.
  */
 public interface ImageModel extends CommandImage {
 
@@ -14,14 +15,14 @@ public interface ImageModel extends CommandImage {
   ImageModel getImageModel(String name);
 
   /**
-   * Returns a 2D array of IPixels that represents the
+   * Returns a 2D array of IPixels that makes up an image.
    *
    * @return IPixel[][]
    */
   IPixel[][] getImage();
 
   /**
-   * Returns the Pixel at posn x y;
+   * Returns the Pixel at posn x y.
    *
    * @param x x axis of pixel
    * @param y y axis of pixel
@@ -51,8 +52,8 @@ public interface ImageModel extends CommandImage {
    */
   void loadImage(ImageModel image, String name);
 
-  /** attempts to save an image to the location given.
-   *
+  /**
+   * attempts to save an image to the location given.
    *
    * @param location path to save file to
    * @param name     to save as

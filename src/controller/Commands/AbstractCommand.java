@@ -1,6 +1,7 @@
 package controller.Commands;
 
 import java.util.Objects;
+
 import controller.ImageCommand;
 
 /**
@@ -17,8 +18,8 @@ public abstract class AbstractCommand implements ImageCommand {
    * @param destImageName name of result image
    */
   public AbstractCommand(String imageName, String destImageName) {
-    this.imageName = Objects.requireNonNull(imageName,"name cannot be null");
-    this.destImageName = Objects.requireNonNull(destImageName,"name cannot be null");
+    this.imageName = Objects.requireNonNull(imageName, "name cannot be null");
+    this.destImageName = Objects.requireNonNull(destImageName, "name cannot be null");
   }
 
 

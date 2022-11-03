@@ -7,7 +7,7 @@ import model.ImageModelImpl;
 /**
  * Command to generate a horizontally flipped image.
  */
-public class HorizontalFlip extends AbstractCommand  {
+public class HorizontalFlip extends AbstractCommand {
 
   /**
    * Constructor for Horizontal Flip command.

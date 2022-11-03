@@ -78,3 +78,10 @@ blue-component: imageName, destinationImageName <br>
 green-component: imageName, destinationImageName <br>
 </p>
 </details>
+
+
+<details><summary> test image src </summary>
+<p>
+http://web.eecs.utk.edu/~ssmit285/guide/img/index.html
+</p>
+</details>
