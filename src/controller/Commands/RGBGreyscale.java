@@ -1,12 +1,12 @@
 package controller.Commands;
 
-import controller.ImageCommands;
+import controller.ImageCommand;
 import model.IPixel;
 import model.ImageModel;
 import model.ImageModelImpl;
 import model.PixelImpl;
 
-public class RGBGreyscale implements ImageCommands {
+public class RGBGreyscale implements ImageCommand {
   String color;
   String imageName;
   String destImageName;
@@ -24,7 +24,7 @@ public class RGBGreyscale implements ImageCommands {
 
   @Override
   public void execute(ImageModel m) {
-    ImageModel model = m.getModel(imageName);
+    ImageModel model = m.getImage(imageName);
     IPixel[][] newImage = new IPixel[model.getHeight()][model.getWidth()];
     for (int i = 0; i < model.getHeight(); i++) {
       for (int j = 0; j < model.getWidth(); j++) {

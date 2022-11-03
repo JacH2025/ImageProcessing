@@ -1,12 +1,16 @@
 package model;
 
-import controller.ImageCommands;
+import controller.ImageCommand;
 
+/**
+ * Interface to allow for executing ImageCommands.
+ */
 public interface CommandImage {
 
   /**
+   * executes ImageCommand c on this.
    *
-   * @param c
+   * @param c ImageCommand
    */
-  void execute(ImageCommands c);
+  void execute(ImageCommand c);
 }

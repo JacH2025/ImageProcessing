@@ -27,7 +27,7 @@ public class ImageControllerImpl implements ImageController {
   private final Readable input;
   private final Appendable output;
 
-  private Map<String, Function<Scanner, ImageCommands>> commands;
+  private Map<String, Function<Scanner, ImageCommand>> commands;
 
 
   /**
@@ -76,7 +76,7 @@ public class ImageControllerImpl implements ImageController {
   }
 
   @Override
-  public void run() throws IOException {
+  public void run() throws IllegalStateException {
     Scanner sc = new Scanner(input);
     boolean quit = false;
 
@@ -108,8 +108,8 @@ public class ImageControllerImpl implements ImageController {
    * @param sc          scanner
    */
   private void processCommand(String instruction, Scanner sc) {
-    ImageCommands c;
-    Function<Scanner, ImageCommands> cmd = commands.getOrDefault(instruction, null);
+    ImageCommand c;
+    Function<Scanner, ImageCommand> cmd = commands.getOrDefault(instruction, null);
     if (cmd == null) {
       writeMessage("unrecognized Input" + System.lineSeparator());
     } else {
@@ -117,7 +117,7 @@ public class ImageControllerImpl implements ImageController {
         c = cmd.apply(sc);
         model.execute(c);
       } catch (Exception e) {
-        writeMessage("invalid command arguments" + System.lineSeparator());
+        writeMessage("command failed");
       }
     }
   }

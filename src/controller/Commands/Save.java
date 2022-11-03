@@ -1,12 +1,12 @@
 package controller.Commands;
 
-import controller.ImageCommands;
+import controller.ImageCommand;
 import model.ImageModel;
 
 /**
  *
  */
-public class Save implements ImageCommands {
+public class Save implements ImageCommand {
   String imagePath;
   String imageName;
 

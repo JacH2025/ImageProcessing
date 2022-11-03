@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Represents a Pixel through
+ * Represents a Pixel with r g b values.
  */
 public class PixelImpl implements IPixel {
   private final int r;

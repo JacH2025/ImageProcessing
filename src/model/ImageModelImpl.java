@@ -4,7 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 
-import controller.ImageCommands;
+import controller.ImageCommand;
 
 import static model.ImageUtil.createPPMFile;
 import static model.ImageUtil.readPPM;
@@ -19,7 +19,7 @@ public class ImageModelImpl implements ImageModel {
   private final IPixel[][] image;
   private final int width;
   private final int height;
-  private final HashMap<String, ImageModel> load = new HashMap<>();
+  private final HashMap<String, ImageModel> loadedImages = new HashMap<>();
 
   /**
    *
@@ -31,7 +31,6 @@ public class ImageModelImpl implements ImageModel {
   }
 
   /**
-   *
    * @param filename
    */
   public ImageModelImpl(String filename) {
@@ -41,7 +40,6 @@ public class ImageModelImpl implements ImageModel {
   }
 
   /**
-   *
    * @param image
    */
   public ImageModelImpl(IPixel[][] image) {
@@ -56,8 +54,13 @@ public class ImageModelImpl implements ImageModel {
   }
 
   @Override
-  public ImageModel getModel(String name) {
-    return load.get(name);
+  public ImageModel getImage(String name) {
+    ImageModel image = loadedImages.getOrDefault(name, null);
+    if (image == null) {
+      throw new IllegalArgumentException(String.format("image names %s has not been loaded", name));
+
+    }
+    return image;
   }
 
   @Override
@@ -77,7 +80,7 @@ public class ImageModelImpl implements ImageModel {
 
   @Override
   public void loadImage(ImageModel model, String name) {
-    load.put(name, model);
+    loadedImages.put(name, model);
   }
 
   @Override
@@ -85,7 +88,7 @@ public class ImageModelImpl implements ImageModel {
     if (!(location.substring(location.length() - 4)).equalsIgnoreCase(".ppm")) {
       throw new IllegalArgumentException("File Name does not end with .ppm");
     }
-    ImageModel model = load.get(name);
+    ImageModel model = loadedImages.get(name);
     try {
       FileOutputStream fos = new FileOutputStream(location);
       fos.write(createPPMFile(model.getImage(), model.getHeight(), model.getWidth()).getBytes());
@@ -96,7 +99,7 @@ public class ImageModelImpl implements ImageModel {
   }
 
   @Override
-  public void execute(ImageCommands c) {
+  public void execute(ImageCommand c) {
     c.execute(this);
   }
 }

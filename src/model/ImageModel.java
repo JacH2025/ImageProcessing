@@ -9,51 +9,46 @@ import java.io.FileNotFoundException;
 public interface ImageModel extends CommandImage {
 
   /**
-   *
    * @param name
    * @return
    */
-  ImageModel getModel(String name);
+  ImageModel getImage(String name);
 
   /**
    * Returns a 2D array of IPixels that represents the
-   *
-   * @return
    */
   IPixel[][] getImage();
 
   /**
-   * Returns the IPixel (Representation of the
+   * Returns the Pixel at posn x y;
    *
-   * @return
+   * @param x x axis of pixel
+   * @param y y axis of pixel
    */
   IPixel getPixel(int x, int y);
 
   /**
-   * Returns the height of the image. (Measured through the amount of pixels that
-   * spans the height).
+   * Returns the height of the image. (Measured through the amount of pixels that spans the
+   * height).
    *
    * @return int
    */
   int getHeight();
 
   /**
-   * Returns the width of the image. (Measured through the amount of pixels that
-   * spans the width).
+   * Returns the width of the image. (Measured through the amount of pixels that spans the width).
    *
    * @return int
    */
   int getWidth();
 
   /**
-   *
    * @param model
    * @param name
    */
   void loadImage(ImageModel model, String name);
 
   /**
-   *
    * @param location
    * @param name
    * @throws FileNotFoundException
