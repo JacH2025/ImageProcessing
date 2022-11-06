@@ -11,8 +11,8 @@ import model.ImageModelImpl;
  * Abstract base class for implementations of ImageCommand that apply an image filter kernel to a
  * image {@link ImageCommand}.
  */
-public abstract class AbtractFilteringCommand extends AbstractCommand {
-  protected final double[][] kernel;
+public abstract class AbstractFilteringCommand extends AbstractCommand {
+  protected double[][] kernel;
 
   /**
    * Default constructor for a command.
@@ -20,9 +20,9 @@ public abstract class AbtractFilteringCommand extends AbstractCommand {
    * @param imageName     name of image to instruct
    * @param destImageName name of result image
    */
-  public AbtractFilteringCommand(String imageName, String destImageName, double[][] kernel) {
+  public AbstractFilteringCommand(String imageName, String destImageName, double[][] kernel) {
     super(imageName, destImageName);
-    this.kernel = Objects.requireNonNull(kernel,"kernel cannot be null");
+    this.kernel = Objects.requireNonNull(kernel, "kernel cannot be null");
   }
 
   /**
@@ -35,9 +35,10 @@ public abstract class AbtractFilteringCommand extends AbstractCommand {
     ImageModel model = m.getImageModel(imageName);
     IPixel[][] newImage = new IPixel[model.getHeight()][model.getWidth()];
 
-    for (int r = 0; r < m.getHeight(); r++) {
-      for (int c = 0; c < m.getWidth(); c++) {
-        newImage[r][c] = applyKernel(model,r,c);
+    for (int r = 0; r < model.getHeight(); r++) {
+      for (int c = 0; c < model.getWidth(); c++) {
+        newImage[r][c] = applyKernel(model, r, c);
+       // System.out.println("absfilter "+ newImage[r][c].toString());
       }
     }
     m.loadImage(new ImageModelImpl(newImage), destImageName);
@@ -48,9 +49,28 @@ public abstract class AbtractFilteringCommand extends AbstractCommand {
    * applied to it.
    *
    * @param model model to
-   * @param r pixel row
-   * @param c pixel col
+   * @param r     pixel row
+   * @param c     pixel col
    * @return new IPixel with filter applied to it.
    */
   protected abstract IPixel applyKernel(ImageModel model, int r, int c);
+
+  /**
+   * returns true if a pixel exists at location rc
+   *
+   * @param r
+   * @param c
+   * @return
+   */
+  protected boolean pixelExists(ImageModel model, int r, int c) {
+    try {
+      model.getPixel(r, c);
+      return true;
+    } catch (IndexOutOfBoundsException e) {
+      return false;
+
+    }
+  }
+
+
 }

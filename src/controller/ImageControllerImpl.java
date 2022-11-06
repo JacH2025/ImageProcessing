@@ -9,6 +9,7 @@ import java.util.function.Function;
 
 import controller.commands.Brighten;
 import controller.commands.HorizontalFlip;
+import controller.commands.ImageBlur;
 import controller.commands.IntensityGreyscale;
 import controller.commands.Load;
 import controller.commands.LumaGreyscale;
@@ -53,23 +54,25 @@ public class ImageControllerImpl implements ImageController {
     commands.put("load", (Scanner s) -> new Load(s.next(), s.next()));
     commands.put("save", (Scanner s) -> new Save(s.next(), s.next()));
     commands.put("horizontal-flip"
-        , (Scanner s) -> new HorizontalFlip(s.next(), s.next()));
+            , (Scanner s) -> new HorizontalFlip(s.next(), s.next()));
     commands.put("vertical-flip"
-        , (Scanner s) -> new VerticalFlip(s.next(), s.next()));
+            , (Scanner s) -> new VerticalFlip(s.next(), s.next()));
     commands.put("brighten"
-        , (Scanner s) -> new Brighten(s.nextInt(), s.next(), s.next()));
+            , (Scanner s) -> new Brighten(s.nextInt(), s.next(), s.next()));
     commands.put("intensity-greyscale"
-        , (Scanner s) -> new IntensityGreyscale(s.next(), s.next()));
+            , (Scanner s) -> new IntensityGreyscale(s.next(), s.next()));
     commands.put("luma-greyscale"
-        , (Scanner s) -> new LumaGreyscale(s.next(), s.next()));
+            , (Scanner s) -> new LumaGreyscale(s.next(), s.next()));
     commands.put("value-greyscale"
-        , (Scanner s) -> new ValueGreyScale(s.next(), s.next()));
+            , (Scanner s) -> new ValueGreyScale(s.next(), s.next()));
     commands.put("red-component"
-        , (Scanner s) -> new RGBGreyscale("red", s.next(), s.next()));
+            , (Scanner s) -> new RGBGreyscale("red", s.next(), s.next()));
     commands.put("blue-component"
-        , (Scanner s) -> new RGBGreyscale("blue", s.next(), s.next()));
+            , (Scanner s) -> new RGBGreyscale("blue", s.next(), s.next()));
     commands.put("green-component"
-        , (Scanner s) -> new RGBGreyscale("green", s.next(), s.next()));
+            , (Scanner s) -> new RGBGreyscale("green", s.next(), s.next()));
+    commands.put("blur"
+            , (Scanner s) -> new ImageBlur(s.next(), s.next()));
   }
 
   @Override
@@ -84,7 +87,7 @@ public class ImageControllerImpl implements ImageController {
         quit = true;
         writeMessage("Bye Bye");
       } else if (instruction.equalsIgnoreCase("help") ||
-          instruction.equalsIgnoreCase("h")) {
+              instruction.equalsIgnoreCase("h")) {
         printHelp();
 
       } else {
@@ -115,7 +118,8 @@ public class ImageControllerImpl implements ImageController {
         model.execute(c);
         writeMessage(instruction + " executed" + System.lineSeparator());
       } catch (Exception e) {
-        writeMessage("command failed");
+        System.out.println(e.getMessage());
+        writeMessage(instruction + " failed");
       }
     }
   }
@@ -131,31 +135,31 @@ public class ImageControllerImpl implements ImageController {
   private void printHelp() {
     StringBuilder helpMenu = new StringBuilder();
     helpMenu.append("This image processor supports the following operations")
-        .append(System.lineSeparator());
+            .append(System.lineSeparator());
     helpMenu.append("Commands: Arguments")
-        .append(System.lineSeparator());
+            .append(System.lineSeparator());
     helpMenu.append("load: imagePath, imageName")
-        .append(System.lineSeparator());
+            .append(System.lineSeparator());
     helpMenu.append("save: imagePath, imageName")
-        .append(System.lineSeparator());
+            .append(System.lineSeparator());
     helpMenu.append("horizontal-flip: imageName, destinationImageName")
-        .append(System.lineSeparator());
+            .append(System.lineSeparator());
     helpMenu.append("vertical-flip: imageName, destinationImageName")
-        .append(System.lineSeparator());
+            .append(System.lineSeparator());
     helpMenu.append("brighten: int increment, imageName, destinationImageName")
-        .append(System.lineSeparator());
+            .append(System.lineSeparator());
     helpMenu.append("intensity-greyscale: imageName, destinationImageName")
-        .append(System.lineSeparator());
+            .append(System.lineSeparator());
     helpMenu.append("luma-greyscale: imageName, destinationImageName")
-        .append(System.lineSeparator());
+            .append(System.lineSeparator());
     helpMenu.append("value-greyscale: imageName, destinationImageName")
-        .append(System.lineSeparator());
+            .append(System.lineSeparator());
     helpMenu.append("red-component: imageName, destinationImageName")
-        .append(System.lineSeparator());
+            .append(System.lineSeparator());
     helpMenu.append("blue-component: imageName, destinationImageName")
-        .append(System.lineSeparator());
+            .append(System.lineSeparator());
     helpMenu.append("green-component: imageName, destinationImageName")
-        .append(System.lineSeparator());
+            .append(System.lineSeparator());
     writeMessage(helpMenu.toString());
   }
 

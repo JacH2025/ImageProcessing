@@ -68,6 +68,11 @@ public class PixelImpl implements IPixel {
     return value;
   }
 
+  public String toString(){
+
+    return String.format("r%d g%d b%d",this.r,this.g,this.b);
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
