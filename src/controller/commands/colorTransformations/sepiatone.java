@@ -1,8 +1,16 @@
 package controller.commands.colorTransformations;
 
+
+/**
+ * sepiatone filter command object.
+ */
 public class sepiatone extends AbstractColorTransform {
   /**
-   * Default constructor for a command.
+   * Constructor for sepiatone. Initialized transformation matrix with a 3x3 matrix which produces a
+   * sepia tone effect.
+   * {0.393, 0.769, 0.189},
+   * {0.349, 0.686, 0.168},
+   * {0.272, 0.534, 0.131}
    *
    * @param imageName     name of image to instruct
    * @param destImageName name of result image

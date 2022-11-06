@@ -5,7 +5,11 @@ package controller.commands.filters;
  */
 public class ImageBlur extends AbstractFilteringCommand {
   /**
-   * Default constructor for a command.
+   * Constructor for image Blur. Initialized Filtering kernel with a 3x3 matrix which produces a
+   * blurring effect.
+   *            {1 / 16.0, 1 / 8.0, 1 / 16.0}
+   *            {1 / 8.0, 1 / 4.0, 1 / 8.0}
+   *            {1 / 16.0, 1 / 8.0, 1 / 16.0}
    *
    * @param imageName     name of image to blur
    * @param destImageName name of result image

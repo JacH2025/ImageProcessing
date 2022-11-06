@@ -17,7 +17,7 @@ public abstract class AbstractFilteringCommand extends AbstractCommand {
   protected double[][] kernel;
 
   /**
-   * Default constructor for a command.
+   * Default constructor for a AbstractFilteringCommand.
    *
    * @param imageName     name of image to instruct
    * @param destImageName name of result image
@@ -41,7 +41,6 @@ public abstract class AbstractFilteringCommand extends AbstractCommand {
     for (int r = 0; r < model.getHeight(); r++) {
       for (int c = 0; c < model.getWidth(); c++) {
         newImage[r][c] = applyKernel(model, r, c);
-        // System.out.println("absfilter "+ newImage[r][c].toString());
       }
     }
     m.loadImage(new ImageModelImpl(newImage), destImageName);
