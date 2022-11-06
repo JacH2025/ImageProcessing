@@ -1,7 +1,8 @@
-package controller.commands;
+package controller.commands.basic;
 
 import java.util.Objects;
 
+import controller.commands.AbstractCommand;
 import model.IPixel;
 import model.ImageModel;
 import model.ImageModelImpl;

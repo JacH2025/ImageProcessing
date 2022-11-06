@@ -1,14 +1,14 @@
 import org.junit.Test;
 
-import controller.commands.Brighten;
-import controller.commands.HorizontalFlip;
-import controller.commands.IntensityGreyscale;
+import controller.commands.basic.Brighten;
+import controller.commands.basic.HorizontalFlip;
+import controller.commands.basic.IntensityGreyscale;
 import controller.commands.Load;
-import controller.commands.LumaGreyscale;
-import controller.commands.RGBGreyscale;
+import controller.commands.basic.LumaGreyscale;
+import controller.commands.basic.RGBGreyscale;
 import controller.commands.Save;
-import controller.commands.ValueGreyScale;
-import controller.commands.VerticalFlip;
+import controller.commands.basic.ValueGreyScale;
+import controller.commands.basic.VerticalFlip;
 import controller.ImageCommand;
 import model.IPixel;
 import model.ImageModel;

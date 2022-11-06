@@ -7,7 +7,7 @@ import model.PixelImpl;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import  org.junit.Assert.assertThrows;
 import static org.junit.Assert.fail;
 
 /**

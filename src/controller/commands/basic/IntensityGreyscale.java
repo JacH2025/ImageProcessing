@@ -1,24 +1,27 @@
-package controller.commands;
+package controller.commands.basic;
 
+
+import controller.commands.AbstractCommand;
 import model.IPixel;
 import model.ImageModel;
 import model.ImageModelImpl;
 import model.PixelImpl;
 
 /**
- * Command to generate a greyscale image based on the Luma value of each pixel.
+ * Command to generate a greyscale image based on the intensity value of each pixel.
  */
-public class LumaGreyscale extends AbstractCommand {
+public class IntensityGreyscale extends AbstractCommand {
 
   /**
-   * Constructor for Luma Greyscale command.
+   * Constructor for Intensity Greyscale command.
    *
    * @param imageName     name of image to greyscale
    * @param destImageName name of result image
    */
-  public LumaGreyscale(String imageName, String destImageName) {
+  public IntensityGreyscale(String imageName, String destImageName) {
     super(imageName, destImageName);
   }
+
 
   @Override
   public void execute(ImageModel m) {
@@ -26,8 +29,8 @@ public class LumaGreyscale extends AbstractCommand {
     IPixel[][] newImage = new IPixel[model.getHeight()][model.getWidth()];
     for (int i = 0; i < model.getHeight(); i++) {
       for (int j = 0; j < model.getWidth(); j++) {
-        int luma = model.getPixel(i, j).getLuma();
-        newImage[i][j] = new PixelImpl(luma, luma, luma);
+        int intensity = model.getPixel(i, j).getIntensity();
+        newImage[i][j] = new PixelImpl(intensity, intensity, intensity);
       }
     }
     m.loadImage(new ImageModelImpl(newImage), destImageName);
