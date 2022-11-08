@@ -9,15 +9,15 @@ import java.util.function.Function;
 
 import controller.commands.basic.Brighten;
 import controller.commands.basic.HorizontalFlip;
-import controller.commands.colorTransformations.greyscale;
-import controller.commands.colorTransformations.sepiatone;
+import controller.commands.colorTransformations.Greyscale;
+import controller.commands.colorTransformations.Sepiatone;
 import controller.commands.filters.ImageBlur;
 import controller.commands.basic.IntensityGreyscale;
 import controller.commands.Load;
 import controller.commands.basic.LumaGreyscale;
 import controller.commands.basic.RGBGreyscale;
 import controller.commands.Save;
-import controller.commands.basic.ValueGreyScale;
+import controller.commands.basic.ValueGreyscale;
 import controller.commands.basic.VerticalFlip;
 import controller.commands.filters.imageSharpening;
 import model.ImageModel;
@@ -67,7 +67,7 @@ public class ImageControllerImpl implements ImageController {
     commands.put("luma-greyscale"
         , (Scanner s) -> new LumaGreyscale(s.next(), s.next()));
     commands.put("value-greyscale"
-        , (Scanner s) -> new ValueGreyScale(s.next(), s.next()));
+        , (Scanner s) -> new ValueGreyscale(s.next(), s.next()));
     commands.put("red-component"
         , (Scanner s) -> new RGBGreyscale("red", s.next(), s.next()));
     commands.put("blue-component"
@@ -79,9 +79,9 @@ public class ImageControllerImpl implements ImageController {
     commands.put("sharpen"
         , (Scanner s) -> new imageSharpening(s.next(), s.next()));
     commands.put("greyscale"
-        , (Scanner s) -> new greyscale(s.next(), s.next()));
+        , (Scanner s) -> new Greyscale(s.next(), s.next()));
     commands.put("sepia"
-        , (Scanner s) -> new sepiatone(s.next(), s.next()));
+        , (Scanner s) -> new Sepiatone(s.next(), s.next()));
   }
 
   @Override

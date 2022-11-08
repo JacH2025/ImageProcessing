@@ -7,7 +7,7 @@ import model.PixelImpl;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import  org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.fail;
 
 /**
@@ -15,7 +15,8 @@ import static org.junit.Assert.fail;
  */
 public class ImageModelTest {
   ImageModel model = new ImageModelImpl("res/6color.ppm");
-  ImageModel koala = new ImageModelImpl("res/Koala.ppm");
+
+  ImageModel water = new ImageModelImpl("res/WaterMountain.jpg");
 
   @Test
   public void testConstructorExceptions() {
@@ -50,13 +51,11 @@ public class ImageModelTest {
   @Test
   public void testImageHeight() {
     assertEquals(2, model.getHeight());
-    assertEquals(768, koala.getHeight());
   }
 
   @Test
   public void testImageWidth() {
     assertEquals(3, model.getWidth());
-    assertEquals(1024, koala.getWidth());
   }
 
   @Test

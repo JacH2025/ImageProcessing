@@ -4,7 +4,7 @@ package controller.commands.colorTransformations;
 /**
  * sepiatone filter command object.
  */
-public class sepiatone extends AbstractColorTransform {
+public class Sepiatone extends AbstractColorTransform {
   /**
    * Constructor for sepiatone. Initialized transformation matrix with a 3x3 matrix which produces a
    * sepia tone effect.
@@ -15,7 +15,7 @@ public class sepiatone extends AbstractColorTransform {
    * @param imageName     name of image to instruct
    * @param destImageName name of result image
    */
-  public sepiatone(String imageName, String destImageName) {
+  public Sepiatone(String imageName, String destImageName) {
     super(imageName, destImageName, new double[][]{
         {0.393, 0.769, 0.189},
         {0.349, 0.686, 0.168},

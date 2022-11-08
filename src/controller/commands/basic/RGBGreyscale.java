@@ -26,7 +26,6 @@ public class RGBGreyscale extends AbstractCommand {
     this.color = Objects.requireNonNull(color);
   }
 
-
   @Override
   public void execute(ImageModel m) {
     ImageModel model = m.getImageModel(imageName);

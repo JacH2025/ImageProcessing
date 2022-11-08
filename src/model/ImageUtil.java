@@ -1,13 +1,110 @@
 package model;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
+
+import javax.imageio.ImageIO;
 
 /**
  * This class contains utility methods to read a PPM image from file and construct the image data.
  */
 public class ImageUtil {
+
+  /**
+   *
+   * @param filename
+   * @return
+   */
+  public static IPixel[][] readImage(String filename) {
+    BufferedImage image = null;
+
+    if (isImagePPMFile(filename)) {
+      return imageData(readPPM(filename));
+    }
+
+    try {
+      image = ImageIO.read(new FileInputStream(filename));
+    } catch (IOException e) {
+      throw new IllegalArgumentException("File " + filename + " not found!");
+    }
+
+    IPixel[][] pixels = new IPixel[image.getHeight()][image.getWidth()];
+    for (int i = 0; i < image.getHeight(); i++) {
+      for (int j = 0; j < image.getWidth(); j++) {
+        int color = image.getRGB(j, i);
+        Color c = new Color(color);
+        pixels[i][j] = new PixelImpl(c.getRed(), c.getGreen(), c.getBlue());
+      }
+    }
+    return pixels;
+  }
+
+  /**
+   *
+   * @param filename
+   * @return
+   */
+  public static int getImageHeight(String filename) {
+    BufferedImage image = null;
+
+    if (isImagePPMFile(filename)) {
+      return getPPMHeight(readPPM(filename));
+    }
+
+    try {
+      image = ImageIO.read(new FileInputStream(filename));
+    } catch (IOException e) {
+      throw new IllegalArgumentException("File " + filename + " not found!");
+    }
+
+    return image.getHeight();
+  }
+
+  /**
+   *
+   * @param filename
+   * @return
+   */
+  public static int getImageWidth(String filename) {
+    BufferedImage image = null;
+
+    if (isImagePPMFile(filename)) {
+      return getPPMWidth(readPPM(filename));
+    }
+
+    try {
+      image = ImageIO.read(new FileInputStream(filename));
+    } catch (IOException e) {
+      throw new IllegalArgumentException("File " + filename + " not found!");
+    }
+
+    return image.getWidth();
+  }
+
+  /**
+   *
+   * @param pixels
+   * @param height
+   * @param width
+   * @return
+   */
+  public static BufferedImage createImage(IPixel[][] pixels, int height, int width) {
+    BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        int r = pixels[i][j].getRed();
+        int g = pixels[i][j].getGreen();
+        int b = pixels[i][j].getBlue();
+        Color color = new Color(r, g, b);
+        image.setRGB(j, i, color.getRGB());
+      }
+    }
+    return image;
+  }
 
   /**
    * Read an image file in the PPM format and creates a string that allows other methods to parse
@@ -41,12 +138,23 @@ public class ImageUtil {
   }
 
   /**
+   *
+   * @param filename
+   * @return
+   */
+  private static boolean isImagePPMFile(String filename) {
+    int index = filename.lastIndexOf('.');
+    String fileType = filename.substring(index + 1).toLowerCase();
+    return fileType.equals("ppm");
+  }
+
+  /**
    * Given the contents of a PPM file, creates a 2D array that contains the coordinates of each
    * pixel, and the RGB values represented as IPixels.
    *
    * @param contents the contents of a file formatted
    * @return IPixel[][] a 2D array that contains the coordinates of each pixel and the RGB values of
-   *         each pixel
+   * each pixel
    */
   public static IPixel[][] imageData(String contents) {
     Scanner sc;
@@ -112,19 +220,19 @@ public class ImageUtil {
    * the file type "P3", the width and height in order, the max color value, and the rest of the
    * pixels represented by a triplet of Red, Green, and Blue values in order.
    *
-   * @param image  image data
+   * @param pixels pixels data
    * @param height height of the image
    * @param width  width of the image
    * @return String formatted as a PPM File
    */
-  public static String createPPMFile(IPixel[][] image, int height, int width) {
+  public static String createPPMFile(IPixel[][] pixels, int height, int width) {
     StringBuilder build = new StringBuilder();
     build.append("P3\n").append(width).append(" ").append(height).append("\n").append("255\n");
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
-        build.append(image[i][j].getRed()).append(" ");
-        build.append(image[i][j].getGreen()).append(" ");
-        build.append(image[i][j].getBlue());
+        build.append(pixels[i][j].getRed()).append(" ");
+        build.append(pixels[i][j].getGreen()).append(" ");
+        build.append(pixels[i][j].getBlue());
         if (j < width - 1) {
           build.append(" ");
         }

@@ -9,8 +9,7 @@ import model.PixelImpl;
 /**
  * Command to generate a greyscale image based on the highest color value of each pixel.
  */
-public class ValueGreyScale extends AbstractCommand {
-
+public class ValueGreyscale extends AbstractCommand {
 
   /**
    * Constructor for Value Greyscale command.
@@ -18,7 +17,7 @@ public class ValueGreyScale extends AbstractCommand {
    * @param imageName     name of image to greyscale
    * @param destImageName name of result image
    */
-  public ValueGreyScale(String imageName, String destImageName) {
+  public ValueGreyscale(String imageName, String destImageName) {
     super(imageName, destImageName);
   }
 

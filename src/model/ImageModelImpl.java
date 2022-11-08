@@ -1,17 +1,22 @@
 package model;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
 
+import javax.imageio.ImageIO;
+
 import controller.ImageCommand;
 
+import static model.ImageUtil.createImage;
 import static model.ImageUtil.createPPMFile;
-import static model.ImageUtil.readPPM;
-import static model.ImageUtil.imageData;
-import static model.ImageUtil.getPPMHeight;
-import static model.ImageUtil.getPPMWidth;
+import static model.ImageUtil.getImageHeight;
+import static model.ImageUtil.getImageWidth;
+import static model.ImageUtil.readImage;
 
 /**
  * ImageModelImpl implements ImageModel. This model contains a 2D array of IPixels which is an image
@@ -39,9 +44,9 @@ public class ImageModelImpl implements ImageModel {
    * @param filename file name or path
    */
   public ImageModelImpl(String filename) {
-    this.image = imageData(readPPM(filename));
-    this.height = getPPMHeight(readPPM(filename));
-    this.width = getPPMWidth(readPPM(filename));
+    this.image = readImage(filename);
+    this.height = getImageHeight(filename);
+    this.width = getImageWidth(filename);
   }
 
   /**
@@ -94,7 +99,26 @@ public class ImageModelImpl implements ImageModel {
   }
 
   @Override
-  public void save(String location, String name) throws IllegalArgumentException {
+  public void save(String location, String name) {
+    ImageModel model = loadedImages.get(name);
+
+    int index = location.lastIndexOf('.');
+    String fileType = location.substring(index + 1).toLowerCase();
+    if (fileType.equals("ppm")) {
+      savePPMFile(location, name);
+      return;
+    }
+
+    try {
+      BufferedImage image = createImage(model.getImage(), model.getHeight(), model.getWidth());
+      File file = new File(location);
+      ImageIO.write(image, fileType, file);
+    } catch (IOException e) {
+      System.out.println("File could not be Saved");
+    }
+  }
+
+  private void savePPMFile(String location, String name) throws IllegalArgumentException {
     if (!(location.substring(location.length() - 4)).equalsIgnoreCase(".ppm")) {
       throw new IllegalArgumentException("File Name does not end with .ppm");
     }

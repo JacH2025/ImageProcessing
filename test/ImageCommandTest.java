@@ -7,7 +7,7 @@ import controller.commands.Load;
 import controller.commands.basic.LumaGreyscale;
 import controller.commands.basic.RGBGreyscale;
 import controller.commands.Save;
-import controller.commands.basic.ValueGreyScale;
+import controller.commands.basic.ValueGreyscale;
 import controller.commands.basic.VerticalFlip;
 import controller.ImageCommand;
 import model.IPixel;
@@ -110,7 +110,7 @@ public class ImageCommandTest {
   public void testCommandValueGreyscale() {
     ImageModel storage = new ImageModelImpl();
     storage.loadImage(new ImageModelImpl("res/6Color.ppm"), "6Color");
-    ImageCommand c = new ValueGreyScale("6Color", "6Color-value");
+    ImageCommand c = new ValueGreyscale("6Color", "6Color-value");
     c.execute(storage);
     IPixel[][] pixels = storage.getImageModel("6Color-value").getImage();
 
