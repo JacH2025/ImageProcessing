@@ -16,11 +16,12 @@ public class ImageUtil {
 
   /**
    *
+   *
    * @param filename
    * @return
    */
   public static IPixel[][] readImage(String filename) {
-    BufferedImage image = null;
+    BufferedImage image;
 
     if (isImagePPMFile(filename)) {
       return imageData(readPPM(filename));
@@ -49,7 +50,7 @@ public class ImageUtil {
    * @return
    */
   public static int getImageHeight(String filename) {
-    BufferedImage image = null;
+    BufferedImage image;
 
     if (isImagePPMFile(filename)) {
       return getPPMHeight(readPPM(filename));
@@ -70,7 +71,7 @@ public class ImageUtil {
    * @return
    */
   public static int getImageWidth(String filename) {
-    BufferedImage image = null;
+    BufferedImage image;
 
     if (isImagePPMFile(filename)) {
       return getPPMWidth(readPPM(filename));
