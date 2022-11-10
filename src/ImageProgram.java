@@ -19,7 +19,7 @@ public class ImageProgram {
    * @param args arguments
    */
   public static void main(String[] args) {
-    InputStreamReader in = new InputStreamReader(System.in);
+    Readable in = new InputStreamReader(System.in);
     for (int i = 0; i < args.length; i++) {
       if (args[i].equalsIgnoreCase("-file")
           || args[i].equalsIgnoreCase("-f")) {
