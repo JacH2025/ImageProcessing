@@ -1,4 +1,4 @@
-package controller.commands.colorTransformations;
+package controller.commands.transformations;
 
 import java.util.Objects;
 

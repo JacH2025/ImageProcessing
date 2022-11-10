@@ -9,8 +9,8 @@ import java.util.function.Function;
 
 import controller.commands.basic.Brighten;
 import controller.commands.basic.HorizontalFlip;
-import controller.commands.colorTransformations.Greyscale;
-import controller.commands.colorTransformations.SepiaTone;
+import controller.commands.transformations.Greyscale;
+import controller.commands.transformations.SepiaTone;
 import controller.commands.filters.Blur;
 import controller.commands.basic.IntensityGreyscale;
 import controller.commands.Load;

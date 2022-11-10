@@ -1,8 +1,8 @@
-package controller.commands.colorTransformations;
+package controller.commands.transformations;
 
 
 /**
- * SepiaTone Using color transform
+ * SepiaTone using color transform.
  */
 public class SepiaTone extends AbstractColorTransform {
   /**

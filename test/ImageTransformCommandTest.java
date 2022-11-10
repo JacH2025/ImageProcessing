@@ -1,8 +1,8 @@
 import org.junit.Test;
 
 import controller.ImageCommand;
-import controller.commands.colorTransformations.Greyscale;
-import controller.commands.colorTransformations.SepiaTone;
+import controller.commands.transformations.Greyscale;
+import controller.commands.transformations.SepiaTone;
 import model.IPixel;
 import model.ImageModel;
 import model.ImageModelImpl;
@@ -11,7 +11,7 @@ import model.PixelImpl;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Tests for {@see src.controller.commands.colorTransformations}.
+ * Tests for {@see src.controller.commands.transformations}.
  * Tests for {@link ImageCommand}
  */
 public class ImageTransformCommandTest {

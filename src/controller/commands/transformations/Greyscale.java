@@ -1,4 +1,4 @@
-package controller.commands.colorTransformations;
+package controller.commands.transformations;
 
 /**
  * Greyscale command using Color transform.
