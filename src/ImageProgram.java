@@ -13,6 +13,7 @@ import controller.ImageControllerImpl;
  */
 public class ImageProgram {
 
+
   /**
    * Run the Image Processing Program in the console.
    *
@@ -24,11 +25,13 @@ public class ImageProgram {
     for (int i = 0; i < args.length; i++) {
 
 
-      if (args[i].equalsIgnoreCase("-file")) {
+      if (args[i].equalsIgnoreCase("-file")
+          || args[i].equalsIgnoreCase("-f")) {
         try {
           File f = new File(args[i + 1]);
           if (f.exists() && f.isFile()) {
             in = new InputStreamReader(new FileInputStream(f));
+            i++;
           }
         } catch (FileNotFoundException e) {
           System.out.append(e.getMessage());
