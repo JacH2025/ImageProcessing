@@ -10,8 +10,8 @@ import java.util.function.Function;
 import controller.commands.basic.Brighten;
 import controller.commands.basic.HorizontalFlip;
 import controller.commands.colorTransformations.Greyscale;
-import controller.commands.colorTransformations.Sepiatone;
-import controller.commands.filters.ImageBlur;
+import controller.commands.colorTransformations.SepiaTone;
+import controller.commands.filters.Blur;
 import controller.commands.basic.IntensityGreyscale;
 import controller.commands.Load;
 import controller.commands.basic.LumaGreyscale;
@@ -19,7 +19,7 @@ import controller.commands.basic.RGBGreyscale;
 import controller.commands.Save;
 import controller.commands.basic.ValueGreyscale;
 import controller.commands.basic.VerticalFlip;
-import controller.commands.filters.imageSharpening;
+import controller.commands.filters.Sharpen;
 import model.ImageModel;
 import model.ImageModelImpl;
 
@@ -49,7 +49,6 @@ public class ImageControllerImpl implements ImageController {
     }
     this.commands = new HashMap<>();
     initializeCommands();
-
   }
 
   //adds currently implemented commands to our command map.
@@ -75,13 +74,13 @@ public class ImageControllerImpl implements ImageController {
     commands.put("green-component"
         , (Scanner s) -> new RGBGreyscale("green", s.next(), s.next()));
     commands.put("blur"
-        , (Scanner s) -> new ImageBlur(s.next(), s.next()));
+        , (Scanner s) -> new Blur(s.next(), s.next()));
     commands.put("sharpen"
-        , (Scanner s) -> new imageSharpening(s.next(), s.next()));
+        , (Scanner s) -> new Sharpen(s.next(), s.next()));
     commands.put("greyscale"
         , (Scanner s) -> new Greyscale(s.next(), s.next()));
     commands.put("sepia"
-        , (Scanner s) -> new Sepiatone(s.next(), s.next()));
+        , (Scanner s) -> new SepiaTone(s.next(), s.next()));
   }
 
   @Override
@@ -98,7 +97,6 @@ public class ImageControllerImpl implements ImageController {
       } else if (instruction.equalsIgnoreCase("help") ||
           instruction.equalsIgnoreCase("h")) {
         printHelp();
-
       } else {
         try {
           processCommand(instruction, sc);
@@ -108,7 +106,6 @@ public class ImageControllerImpl implements ImageController {
       }
     }
   }
-
 
   /**
    * Attempts to run a command.
@@ -133,6 +130,11 @@ public class ImageControllerImpl implements ImageController {
     }
   }
 
+  /**
+   *
+   * @param message
+   * @throws IllegalStateException
+   */
   private void writeMessage(String message) throws IllegalStateException {
     try {
       output.append(message);

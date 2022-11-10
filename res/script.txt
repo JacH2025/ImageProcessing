@@ -1,0 +1,7 @@
+load res/kint.ppm k
+vertical-flip k kf
+sepia kf kfs
+blur kfs kfsb
+blur kfsb kfsb
+blur kfsb kfsb
+save res/kfsb.ppm kfsb

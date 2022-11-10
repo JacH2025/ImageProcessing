@@ -14,9 +14,11 @@ import static org.junit.Assert.fail;
  * Tests for {@link ImageModelImpl}.
  */
 public class ImageModelTest {
-  ImageModel model = new ImageModelImpl("res/6color.ppm");
-
-  ImageModel water = new ImageModelImpl("res/WaterMountain.jpg");
+  ImageModel colorsPPM = new ImageModelImpl("res/6color.ppm");
+  ImageModel colorPNG = new ImageModelImpl("res/6Color.png");
+  ImageModel candles = new ImageModelImpl("res/Candles.png");
+  ImageModel clouds = new ImageModelImpl("res/Clouds.jpg");
+  ImageModel mountains = new ImageModelImpl("res/MountainWaves.bmp");
 
   @Test
   public void testConstructorExceptions() {
@@ -29,12 +31,19 @@ public class ImageModelTest {
 
   @Test
   public void testInitializedPixels() {
-    assertEquals(new PixelImpl(255, 0, 0), model.getImage()[0][0]);
-    assertEquals(new PixelImpl(0, 255, 0), model.getImage()[0][1]);
-    assertEquals(new PixelImpl(0, 0, 255), model.getImage()[0][2]);
-    assertEquals(new PixelImpl(255, 255, 0), model.getImage()[1][0]);
-    assertEquals(new PixelImpl(255, 255, 255), model.getImage()[1][1]);
-    assertEquals(new PixelImpl(0, 0, 0), model.getImage()[1][2]);
+    assertEquals(new PixelImpl(255, 0, 0), colorsPPM.getImage()[0][0]);
+    assertEquals(new PixelImpl(0, 255, 0), colorsPPM.getImage()[0][1]);
+    assertEquals(new PixelImpl(0, 0, 255), colorsPPM.getImage()[0][2]);
+    assertEquals(new PixelImpl(255, 255, 0), colorsPPM.getImage()[1][0]);
+    assertEquals(new PixelImpl(255, 255, 255), colorsPPM.getImage()[1][1]);
+    assertEquals(new PixelImpl(0, 0, 0), colorsPPM.getImage()[1][2]);
+
+    assertEquals(new PixelImpl(255, 0, 0), colorPNG.getImage()[0][0]);
+    assertEquals(new PixelImpl(0, 255, 0), colorPNG.getImage()[0][1]);
+    assertEquals(new PixelImpl(0, 0, 255), colorPNG.getImage()[0][2]);
+    assertEquals(new PixelImpl(255, 255, 0), colorPNG.getImage()[1][0]);
+    assertEquals(new PixelImpl(255, 255, 255), colorPNG.getImage()[1][1]);
+    assertEquals(new PixelImpl(0, 0, 0), colorPNG.getImage()[1][2]);
   }
 
   @Test
@@ -50,12 +59,20 @@ public class ImageModelTest {
 
   @Test
   public void testImageHeight() {
-    assertEquals(2, model.getHeight());
+    assertEquals(2, colorsPPM.getHeight());
+    assertEquals(2, colorPNG.getHeight());
+    assertEquals(72, candles.getHeight());
+    assertEquals(60, clouds.getHeight());
+    assertEquals(55, mountains.getHeight());
   }
 
   @Test
   public void testImageWidth() {
-    assertEquals(3, model.getWidth());
+    assertEquals(3, colorsPPM.getWidth());
+    assertEquals(3, colorPNG.getWidth());
+    assertEquals(90, candles.getWidth());
+    assertEquals(90, clouds.getWidth());
+    assertEquals(85, mountains.getWidth());
   }
 
   @Test
@@ -76,7 +93,6 @@ public class ImageModelTest {
     } catch (IllegalArgumentException e) {
       e.getMessage();
     }
-
     try {
       storage.getImageModel("ImageDoesNotExist");
       fail();
@@ -87,6 +103,16 @@ public class ImageModelTest {
 
   @Test
   public void testSaveImageFromModel() {
+    ImageModel storage = new ImageModelImpl();
+    storage.loadImage(new ImageModelImpl("res/6Color.ppm"), "6Color");
+    storage.save("res/new-6color.png", "6Color");
+
+    assertArrayEquals(new ImageModelImpl("res/new-6Color.png").getImage(),
+        new ImageModelImpl("res/6Color.ppm").getImage());
+  }
+
+  @Test
+  public void testSavePPMImageFromModel() {
     ImageModel storage = new ImageModelImpl();
     storage.loadImage(new ImageModelImpl("res/6Color.ppm"), "6Color");
     storage.save("res/new-6color.ppm", "6Color");

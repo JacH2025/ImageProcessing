@@ -63,7 +63,11 @@ public class ImageControllerTest {
         "value-greyscale: imageName, destinationImageName\n" +
         "red-component: imageName, destinationImageName\n" +
         "blue-component: imageName, destinationImageName\n" +
-        "green-component: imageName, destinationImageName\n";
+        "green-component: imageName, destinationImageName\n" +
+        "blur: imageName, destinationImageName\n" +
+        "sharpen: imageName, destinationImageName\n" +
+        "greyscale: imageName, destinationImageName\n" +
+        "sepia: imageName, destinationImageName\n";
     controller.run();
 
     assertEquals(expected, output.toString());
@@ -87,7 +91,7 @@ public class ImageControllerTest {
   @Test
   public void testInvalidInputException() {
     Appendable instruct = new StringBuilder("load res/6color.ppm 6Color\n" +
-        "save res/new-6Color 6Color\n");
+        "blur ImageDoesNotExist 6ColorBlur\n");
     Readable input = new StringReader(instruct.toString());
     Appendable output = new StringBuilder();
     ImageController controller = new ImageControllerImpl(input, output);
@@ -95,7 +99,7 @@ public class ImageControllerTest {
         "Enter help or h for a list of commands.\n" +
         "Enter quit or q to exit.\n" +
         "load executed\n" +
-        "command failed";
+        "blur failed";
     controller.run();
     assertEquals(expected, output.toString());
   }

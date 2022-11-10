@@ -46,8 +46,8 @@ public abstract class AbstractColorTransform extends AbstractCommand {
   }
 
   /**
-   * linear matrix multiplication of pixel rgb values by the transformation matrix. override to do
-   * transformations that dont uniformly apply to every color channel.
+   * Linear matrix multiplication of pixel rgb values by the transformation matrix. Override to do
+   * transformations that do not uniformly apply to every color channel.
    *
    * @param p pixel to transform
    * @return new pixel representing p with the transformation matrix applied.
