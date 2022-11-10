@@ -10,7 +10,7 @@ import java.util.Scanner;
 import javax.imageio.ImageIO;
 
 /**
- * This class contains utility methods to read a Image File formats (PNG, JPG, BMP, PPM),
+ * This class contains utility methods to read an Image File formats (PNG, JPG, BMP, PPM),
  * and returns the image's information.
  */
 public class ImageUtil {

@@ -32,7 +32,7 @@ public class RGBGreyscale extends AbstractCommand {
     IPixel[][] newImage = new IPixel[model.getHeight()][model.getWidth()];
     for (int i = 0; i < model.getHeight(); i++) {
       for (int j = 0; j < model.getWidth(); j++) {
-        int value = 0;
+        int value;
         switch (color) {
           case "red":
             value = model.getPixel(i, j).getRed();

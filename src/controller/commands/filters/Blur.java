@@ -4,6 +4,7 @@ package controller.commands.filters;
  * Gaussian blur Command.
  */
 public class Blur extends AbstractFilterCommand {
+
   /**
    * Constructor for image Blur. Initialized Filtering kernel with a 3x3 matrix which produces a
    * blurring effect.
@@ -23,6 +24,4 @@ public class Blur extends AbstractFilterCommand {
         }
     );
   }
-
-
 }

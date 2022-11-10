@@ -78,7 +78,6 @@ public class ImageModelTest {
   @Test
   public void testLoadPPMImageFromModel() {
     ImageModel storage = new ImageModelImpl();
-
     try {
       storage.getImageModel("6Color");
       fail();
@@ -112,11 +111,12 @@ public class ImageModelTest {
     ImageModel storage = new ImageModelImpl();
     storage.loadImage(new ImageModelImpl("res/6Color.ppm"), "6Color");
     storage.save("res/test-6Color.png", "6Color");
-    storage.save("res/test-6Color.bmp", "6Color");
+    storage.loadImage(new ImageModelImpl("res/test-6Color.png"), "6ColorPNG");
+    storage.save("res/test-6Color.ppm", "6ColorPNG");
 
     assertArrayEquals(new ImageModelImpl("res/test-6Color.png").getImage(),
         new ImageModelImpl("res/6Color.ppm").getImage());
-    assertArrayEquals(new ImageModelImpl("res/test-6Color.bmp").getImage(),
+    assertArrayEquals(new ImageModelImpl("res/test-6Color.ppm").getImage(),
         new ImageModelImpl("res/6Color.ppm").getImage());
   }
 

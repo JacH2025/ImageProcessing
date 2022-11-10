@@ -46,8 +46,8 @@ public abstract class AbstractFilterCommand extends AbstractCommand {
   }
 
   /**
-   * Uses a filter kernel on a model at pixel at posn r,c , and returns a new pixel with the filter
-   * applied to it.
+   * Uses a filter kernel on a model at pixel at position r, c and returns a new pixel
+   * with the filter applied to it.
    *
    * @param model model to
    * @param r     pixel row

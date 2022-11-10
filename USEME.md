@@ -8,12 +8,12 @@
 Start program. quit or q to exit the program. help or h to see a list of supported image operations,
 and how to use them.
 
-to use a command type the command and its arguments in the order seen bellow for each command. for
-example:<br> 'load desktop/img.png img'<br> will load img into this image processor. and: <br> '
-vertical-flip img img-flipped' <br> will add a new flipped version of img to the image processor.
+To use a command type the command and its arguments in the order seen bellow for each command. For
+example:<br> 'load desktop/img.png img'<br> will load img into this image processor, and: <br>
+'vertical-flip img img-flipped' <br> will add a new flipped version of img to the image processor.
 
-use flag -f or -file followed by a script file with commands inside to run a script. program exits
-at end of script
+Use flag -f or -file followed by a script file with commands inside to run a script. Program exits
+at end of script.
 
 
 

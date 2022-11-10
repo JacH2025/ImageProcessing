@@ -84,7 +84,7 @@ sharpen: imageName, destinationImageName <br>
 </details>
 
 
-<details><summary> test image src </summary>
+<details><summary> Test Image Source </summary>
 <p>
 http://web.eecs.utk.edu/~ssmit285/guide/img/index.html
 </p>
