@@ -76,6 +76,10 @@ value-greyscale: imageName, destinationImageName <br>
 red-component: imageName, destinationImageName <br> 
 blue-component: imageName, destinationImageName <br>
 green-component: imageName, destinationImageName <br>
+greyscale: imageName, destinationImageName <br>
+blur: imageName, destinationImageName <br> 
+sepia: imageName, destinationImageName <br>
+sharpen: imageName, destinationImageName <br>
 </p>
 </details>
 
