@@ -24,8 +24,8 @@ public interface ImageModel extends CommandImage {
   /**
    * Returns the Pixel at posn x y.
    *
-   * @param x x axis of pixel
-   * @param y y axis of pixel
+   * @param x x-axis of pixel
+   * @param y y-axis of pixel
    */
   IPixel getPixel(int x, int y);
 
@@ -53,7 +53,7 @@ public interface ImageModel extends CommandImage {
   void loadImage(ImageModel image, String name);
 
   /**
-   * attempts to save an image to the location given.
+   * Attempts to save an image to the location given.
    *
    * @param location path to save file to
    * @param name     to save as

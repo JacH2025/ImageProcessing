@@ -5,7 +5,7 @@ package controller.commands.colorTransformations;
  */
 public class Greyscale extends AbstractColorTransform {
   /**
-   * Constructs a Greyscale Command. executing will search for ImageName in given model and add a
+   * Constructs a Greyscale Command. Executing will search for ImageName in given model and add a
    * new greyscale image with destImageName.
    *
    * @param imageName     name of image to instruct

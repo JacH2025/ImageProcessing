@@ -19,7 +19,7 @@ import static model.ImageUtil.readImage;
 
 /**
  * ImageModelImpl implements ImageModel. This model contains a 2D array of IPixels which is an image
- * representation. It also contains HashMap of images associated with String names. images can be
+ * representation. It also contains HashMap of images associated with String names. Images can be
  * loaded into this HashMap, and have Commands executed on them.
  */
 public class ImageModelImpl implements ImageModel {
@@ -119,7 +119,7 @@ public class ImageModelImpl implements ImageModel {
 
   private void savePPMFile(String location, String name) throws IllegalArgumentException {
     if (!(location.substring(location.length() - 4)).equalsIgnoreCase(".ppm")) {
-      throw new IllegalArgumentException("File Name does not end with .ppm");
+      throw new IllegalArgumentException("File name does not end with .ppm");
     }
     ImageModel model = loadedImages.get(name);
     try {
