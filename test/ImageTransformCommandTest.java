@@ -11,7 +11,7 @@ import model.PixelImpl;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Tests for {@see package.controller.commands.colorTransformations}.
+ * Tests for {@see src.controller.commands.colorTransformations}.
  * Tests for {@link ImageCommand}
  */
 public class ImageTransformCommandTest {

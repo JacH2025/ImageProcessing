@@ -1,7 +1,19 @@
-load res/kint.ppm k
-vertical-flip k kf
-sepia kf kfs
-blur kfs kfsb
-blur kfsb kfsb
-blur kfsb kfsb
-save res/kfsb.ppm kfsb
+load res/6Color.ppm 6Color
+brighten 50 6Color 6Color-brighten50
+brighten -50 6Color 6Color-darken50
+horizontal-flip 6Color 6Color-horizontal
+vertical-flip 6Color 6Color-vertical
+intensity-greyscale 6Color 6Color-intensity
+luma-greyscale 6Color 6Color-luma
+value-greyscale 6Color 6Color-value
+red-component 6Color 6Color-red
+green-component 6Color 6Color-green
+blue-component 6Color 6Color-blue
+sepia 6Color 6Color-sepia
+greyscale 6Color 6Color-greyscale
+blur 6Color 6Color-blur
+sharpen 6Color 6Color-sharpen
+save res/6Color-sepia.ppm 6Color-sepia
+save res/6Color-greyscale.png 6Color-greyscale
+save res/6Color-blur.bmp 6Color-blur
+save res/6Color-sharpen.jpg 6Color-sharpen

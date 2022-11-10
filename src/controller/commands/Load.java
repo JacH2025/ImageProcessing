@@ -10,8 +10,8 @@ import model.ImageModelImpl;
  * Command to load an image onto an ImageModel.
  */
 public class Load implements ImageCommand {
-  private String imagePath;
-  private String imageName;
+  private final String imagePath;
+  private final String imageName;
 
   /**
    * Constructor for Load Command.

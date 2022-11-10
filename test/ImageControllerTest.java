@@ -13,6 +13,7 @@ import static org.junit.Assert.assertThrows;
  * Tests for {@link ImageControllerImpl}.
  */
 public class ImageControllerTest {
+
   @Test
   public void testControllerExceptions() {
     Readable input = new InputStreamReader(System.in);

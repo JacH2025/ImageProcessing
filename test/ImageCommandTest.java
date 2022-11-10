@@ -51,12 +51,12 @@ public class ImageCommandTest {
   public void testCommandSaveAndOverride() {
     ImageModel storage = new ImageModelImpl();
     storage.loadImage(new ImageModelImpl("res/6Color.ppm"), "6Color");
-    ImageCommand c = new Save("res/new-6Color.ppm", "6Color");
+    ImageCommand c = new Save("res/test-6Color.ppm", "6Color");
     c.execute(storage);
 
-    checkSamePixels(new ImageModelImpl("res/new-6Color.ppm"),
+    checkSamePixels(new ImageModelImpl("res/test-6Color.ppm"),
         new ImageModelImpl("res/6Color.ppm"));
-    assertArrayEquals(new ImageModelImpl("res/new-6Color.ppm").getImage(),
+    assertArrayEquals(new ImageModelImpl("res/test-6Color.ppm").getImage(),
         new ImageModelImpl("res/6Color.ppm").getImage());
   }
 

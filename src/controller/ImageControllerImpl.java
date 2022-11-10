@@ -33,7 +33,7 @@ public class ImageControllerImpl implements ImageController {
   private final Map<String, Function<Scanner, ImageCommand>> commands;
 
   /**
-   * Basic constructor for a Image controller. starts with a new image model.
+   * Basic constructor for an Image controller. starts with a new image model.
    *
    * @param input  Readable input stream to give commands to controller
    * @param output Appendable output stream to give user feedback
@@ -110,7 +110,7 @@ public class ImageControllerImpl implements ImageController {
   /**
    * Attempts to run a command.
    *
-   * @param instruction name of command to be ran
+   * @param instruction name of command to run
    * @param sc          scanner
    */
   private void processCommand(String instruction, Scanner sc) {
@@ -130,11 +130,6 @@ public class ImageControllerImpl implements ImageController {
     }
   }
 
-  /**
-   *
-   * @param message
-   * @throws IllegalStateException
-   */
   private void writeMessage(String message) throws IllegalStateException {
     try {
       output.append(message);

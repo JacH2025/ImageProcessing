@@ -1,13 +1,13 @@
 package model;
 
 /**
- * Interface for our image processor. extends CommandImage so that commands can be executed on
+ * Interface for our Image Processor. Extends CommandImage so that commands can be executed on
  * ImageModel implementations.
  */
 public interface ImageModel extends CommandImage {
 
   /**
-   * returns an image with given name if such an image is loaded into the model.
+   * Returns an image with given name (key) if such an image is loaded into the model.
    *
    * @param name name of image to get from model.
    * @return ImageModel
@@ -22,7 +22,7 @@ public interface ImageModel extends CommandImage {
   IPixel[][] getImage();
 
   /**
-   * Returns the Pixel at posn x y.
+   * Returns the Pixel at position x y.
    *
    * @param x x-axis of pixel
    * @param y y-axis of pixel
@@ -53,7 +53,8 @@ public interface ImageModel extends CommandImage {
   void loadImage(ImageModel image, String name);
 
   /**
-   * Attempts to save an image to the location given.
+   * Attempts to save an image to the location given. Possible to save PPM file formats
+   * and Image file formats supported by ImageIO such as PNG, JPEG, and BMP.
    *
    * @param location path to save file to
    * @param name     to save as

@@ -30,7 +30,7 @@ public class ImageModelTest {
   }
 
   @Test
-  public void testInitializedPixels() {
+  public void testInitializedPixelsForGivenFile() {
     assertEquals(new PixelImpl(255, 0, 0), colorsPPM.getImage()[0][0]);
     assertEquals(new PixelImpl(0, 255, 0), colorsPPM.getImage()[0][1]);
     assertEquals(new PixelImpl(0, 0, 255), colorsPPM.getImage()[0][2]);
@@ -76,7 +76,7 @@ public class ImageModelTest {
   }
 
   @Test
-  public void testLoadImageFromModel() {
+  public void testLoadPPMImageFromModel() {
     ImageModel storage = new ImageModelImpl();
 
     try {
@@ -86,10 +86,16 @@ public class ImageModelTest {
       e.getMessage();
     }
 
-    storage.loadImage(new ImageModelImpl("res/6color.ppm"), "6Color");
+    storage.loadImage(new ImageModelImpl("res/6color.ppm"), "6ColorPPM");
+    storage.loadImage(new ImageModelImpl("res/6color.png"), "6ColorPNG");
 
     try {
-      storage.getImageModel("6Color");
+      storage.getImageModel("6ColorPPM");
+    } catch (IllegalArgumentException e) {
+      e.getMessage();
+    }
+    try {
+      storage.getImageModel("6ColorPNG");
     } catch (IllegalArgumentException e) {
       e.getMessage();
     }
@@ -105,9 +111,12 @@ public class ImageModelTest {
   public void testSaveImageFromModel() {
     ImageModel storage = new ImageModelImpl();
     storage.loadImage(new ImageModelImpl("res/6Color.ppm"), "6Color");
-    storage.save("res/new-6color.png", "6Color");
+    storage.save("res/test-6Color.png", "6Color");
+    storage.save("res/test-6Color.bmp", "6Color");
 
-    assertArrayEquals(new ImageModelImpl("res/new-6Color.png").getImage(),
+    assertArrayEquals(new ImageModelImpl("res/test-6Color.png").getImage(),
+        new ImageModelImpl("res/6Color.ppm").getImage());
+    assertArrayEquals(new ImageModelImpl("res/test-6Color.bmp").getImage(),
         new ImageModelImpl("res/6Color.ppm").getImage());
   }
 
@@ -115,9 +124,9 @@ public class ImageModelTest {
   public void testSavePPMImageFromModel() {
     ImageModel storage = new ImageModelImpl();
     storage.loadImage(new ImageModelImpl("res/6Color.ppm"), "6Color");
-    storage.save("res/new-6color.ppm", "6Color");
+    storage.save("res/test-6color.ppm", "6Color");
 
-    assertArrayEquals(new ImageModelImpl("res/new-6Color.ppm").getImage(),
+    assertArrayEquals(new ImageModelImpl("res/test-6Color.ppm").getImage(),
         new ImageModelImpl("res/6Color.ppm").getImage());
   }
 }

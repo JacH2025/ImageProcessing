@@ -16,7 +16,7 @@ import model.PixelImpl;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Tests for {@see package.basic}.
+ * Tests for {@see src.controller.commands.basic}.
  * Tests for {@link ImageCommand}
  */
 public class ImageBasicCommandTest {

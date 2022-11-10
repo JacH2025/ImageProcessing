@@ -14,6 +14,7 @@ public class ImageProgram {
 
   /**
    * Run the Image Processing Program in the console.
+   * Script inputs are allowed.
    *
    * @param args arguments
    */

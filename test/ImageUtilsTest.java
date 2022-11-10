@@ -1,6 +1,10 @@
 import org.junit.Test;
 
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import model.IPixel;
 import model.ImageUtil;
@@ -11,6 +15,7 @@ import static model.ImageUtil.getImageHeight;
 import static model.ImageUtil.getImageWidth;
 import static model.ImageUtil.readImage;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 /**
  * Tests for {@link ImageUtil}.
@@ -72,6 +77,16 @@ public class ImageUtilsTest {
   }
 
   @Test
+  public void testImageNotFoundException() {
+    assertThrows(IllegalArgumentException.class,
+        () -> readImage("ImageDoesNotExist"));
+    assertThrows(IllegalArgumentException.class,
+        () -> getImageWidth("ImageDoesNotExist"));
+    assertThrows(IllegalArgumentException.class,
+        () -> getImageHeight("ImageDoesNotExist"));
+  }
+
+  @Test
   public void testReadImage() {
     IPixel[][] pixels = readImage("res/6Color.png");
     assertEquals(new PixelImpl(255, 0, 0), pixels[0][0]);
@@ -120,18 +135,29 @@ public class ImageUtilsTest {
   @Test
   public void testCreateImage() {
     IPixel pixel1 = new PixelImpl(255, 0, 0);
-    IPixel pixel2 = new PixelImpl(255, 255, 0);
-    IPixel pixel3 = new PixelImpl(255, 0, 255);
-    IPixel pixel4 = new PixelImpl(0, 0, 0);
-    IPixel[][] pixels = new PixelImpl[2][2];
+    IPixel pixel2 = new PixelImpl(0, 255, 0);
+    IPixel pixel3 = new PixelImpl(0, 0, 255);
+    IPixel pixel4 = new PixelImpl(255, 255, 0);
+    IPixel pixel5 = new PixelImpl(255, 255, 255);
+    IPixel pixel6 = new PixelImpl(0, 0, 0);
+    IPixel[][] pixels = new PixelImpl[2][3];
     pixels[0][0] = pixel1;
     pixels[0][1] = pixel2;
-    pixels[1][0] = pixel3;
-    pixels[1][1] = pixel4;
-
+    pixels[0][2] = pixel3;
+    pixels[1][0] = pixel4;
+    pixels[1][1] = pixel5;
+    pixels[1][2] = pixel6;
     BufferedImage image = createImage(pixels, pixels.length, pixels[0].length);
-    assertEquals(2, image.getWidth());
-    assertEquals(2, image.getHeight());
-
+    BufferedImage imageFromRes;
+    try {
+      imageFromRes = ImageIO.read(new FileInputStream("res/6Color.png"));
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+    for (int i = 0; i < pixels.length; i++) {
+      for (int j = 0; j < pixels[0].length; j++) {
+        assertEquals(imageFromRes.getRGB(j, i), image.getRGB(j, i));
+      }
+    }
   }
 }

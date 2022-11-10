@@ -10,16 +10,18 @@ import java.util.Scanner;
 import javax.imageio.ImageIO;
 
 /**
- * This class contains utility methods to read a PPM image from file and construct the image data.
+ * This class contains utility methods to read a Image File formats (PNG, JPG, BMP, PPM),
+ * and returns the image's information.
  */
 public class ImageUtil {
 
   /**
-   * Can read an Image file, and returns an IPixel 2D representation of it.
+   * Can read an Image file (PNG, JPG, BMP, PPM, etc), and returns an
+   * IPixel 2D representation of it.
    *
-   * @param filename the path of the file (file to read)
+   * @param filename the path of the file
    * @return IPixel[][] a 2D array that contains the coordinates of each pixel and the RGB
-   *         values of each pixel (representation of the image file)
+   *         values of each pixel
    * @throws IllegalArgumentException when file is not found
    */
   public static IPixel[][] readImage(String filename) throws IllegalArgumentException {
@@ -69,12 +71,13 @@ public class ImageUtil {
   }
 
   /**
-   *
+   * Reads the given Image file and converts to a BufferedImage.
    *
    * @param filename the path of the file
    * @return BufferedImage
+   * @throws IllegalArgumentException when file is not found
    */
-  private static BufferedImage readBufferedImage(String filename) {
+  private static BufferedImage readBufferedImage(String filename) throws IllegalArgumentException {
     BufferedImage image;
     try {
       image = ImageIO.read(new FileInputStream(filename));
@@ -98,9 +101,9 @@ public class ImageUtil {
   }
 
   /**
-   * Takes an IPixel 2d array and creates a copy as a BufferedImage.
+   * Takes an IPixel 2D array and creates a copy as a BufferedImage.
    *
-   * @param pixels 2d pixel array making an image
+   * @param pixels 2D Pixel Array of an image
    * @param height image height
    * @param width image width
    * @return BufferedImage representation of input image
@@ -218,7 +221,7 @@ public class ImageUtil {
    * the file type "P3", the width and height in order, the max color value, and the rest of the
    * pixels represented by a triplet of Red, Green, and Blue values in order.
    *
-   * @param pixels pixels data
+   * @param pixels 2D Pixel Array of an image
    * @param height height of the image
    * @param width  width of the image
    * @return String formatted as a PPM File
