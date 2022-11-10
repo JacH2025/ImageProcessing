@@ -15,18 +15,20 @@ import javax.imageio.ImageIO;
 public class ImageUtil {
 
   /**
+   * can read a Image file, and returns an IPixel 2D representation of it.
    *
-   *
-   * @param filename
-   * @return
+   * @param filename file to read.
+   * @return IPixel representation of image file.
+   * @throws IllegalArgumentException when file not found
    */
-  public static IPixel[][] readImage(String filename) {
-    BufferedImage image;
+  public static IPixel[][] readImage(String filename) throws IllegalArgumentException {
+
 
     if (isImagePPMFile(filename)) {
       return imageData(readPPM(filename));
     }
 
+    BufferedImage image;
     try {
       image = ImageIO.read(new FileInputStream(filename));
     } catch (IOException e) {
@@ -45,53 +47,58 @@ public class ImageUtil {
   }
 
   /**
+   * gets height from an image file.
    *
-   * @param filename
-   * @return
+   * @param path path to file
+   * @return image height
+   * @throws IllegalArgumentException when file not found
    */
-  public static int getImageHeight(String filename) {
-    BufferedImage image;
-
-    if (isImagePPMFile(filename)) {
-      return getPPMHeight(readPPM(filename));
+  public static int getImageHeight(String path) throws IllegalArgumentException {
+    if (isImagePPMFile(path)) {
+      return getPPMHeight(readPPM(path));
     }
 
+    BufferedImage image;
+
     try {
-      image = ImageIO.read(new FileInputStream(filename));
+      image = ImageIO.read(new FileInputStream(path));
     } catch (IOException e) {
-      throw new IllegalArgumentException("File " + filename + " not found!");
+      throw new IllegalArgumentException("File " + path + " not found!");
     }
 
     return image.getHeight();
   }
 
   /**
+   * gets height from image.
    *
-   * @param filename
-   * @return
+   * @param path path to file
+   * @return image width
+   * @throws IllegalArgumentException when file not found
    */
-  public static int getImageWidth(String filename) {
+  public static int getImageWidth(String path) throws IllegalArgumentException {
+
+    if (isImagePPMFile(path)) {
+      return getPPMWidth(readPPM(path));
+    }
     BufferedImage image;
 
-    if (isImagePPMFile(filename)) {
-      return getPPMWidth(readPPM(filename));
-    }
-
     try {
-      image = ImageIO.read(new FileInputStream(filename));
+      image = ImageIO.read(new FileInputStream(path));
     } catch (IOException e) {
-      throw new IllegalArgumentException("File " + filename + " not found!");
+      throw new IllegalArgumentException("File " + path + " not found!");
     }
 
     return image.getWidth();
   }
 
   /**
+   * Takes an IPixel 2d array and creates a copy as a BufferedImage.
    *
-   * @param pixels
-   * @param height
-   * @param width
-   * @return
+   * @param pixels 2d pixel array making an image
+   * @param height image height
+   * @param width  image width
+   * @return BufferedImage representation of input image
    */
   public static BufferedImage createImage(IPixel[][] pixels, int height, int width) {
     BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -125,11 +132,7 @@ public class ImageUtil {
     }
 
     StringBuilder builder = new StringBuilder();
-    while (true) {
-      assert sc != null;
-      if (!sc.hasNextLine()) {
-        break;
-      }
+    while (sc.hasNextLine()) {
       String s = sc.nextLine();
       if (s.charAt(0) != '#') {
         builder.append(s).append(System.lineSeparator());
@@ -139,9 +142,10 @@ public class ImageUtil {
   }
 
   /**
+   * checks if a file is a PPM.
    *
-   * @param filename
-   * @return
+   * @param filename path to file
+   * @return true if file ends in ".ppm"
    */
   private static boolean isImagePPMFile(String filename) {
     int index = filename.lastIndexOf('.');
