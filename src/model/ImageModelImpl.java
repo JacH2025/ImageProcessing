@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -108,7 +107,7 @@ public class ImageModelImpl implements ImageModel {
       savePPMFile(location, name);
       return;
     }
-
+    //if file type is not specified, default to PNG File type
     try {
       BufferedImage image = createImage(model.getImage(), model.getHeight(), model.getWidth());
       File file = new File(location);

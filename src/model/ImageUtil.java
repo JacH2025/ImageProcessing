@@ -17,22 +17,15 @@ public class ImageUtil {
   /**
    *
    *
-   * @param filename
-   * @return
+   * @param filename the path of the file
+   * @return IPixel[][] a 2D array that contains the coordinates of each pixel and the RGB
+   *         values of each pixel
    */
   public static IPixel[][] readImage(String filename) {
-    BufferedImage image;
-
     if (isImagePPMFile(filename)) {
       return imageData(readPPM(filename));
     }
-
-    try {
-      image = ImageIO.read(new FileInputStream(filename));
-    } catch (IOException e) {
-      throw new IllegalArgumentException("File " + filename + " not found!");
-    }
-
+    BufferedImage image = readBufferedImage(filename);
     IPixel[][] pixels = new IPixel[image.getHeight()][image.getWidth()];
     for (int i = 0; i < image.getHeight(); i++) {
       for (int j = 0; j < image.getWidth(); j++) {
@@ -46,44 +39,55 @@ public class ImageUtil {
 
   /**
    *
-   * @param filename
-   * @return
+   * @param filename the path of the file
+   * @return int height of the image
    */
   public static int getImageHeight(String filename) {
-    BufferedImage image;
-
     if (isImagePPMFile(filename)) {
       return getPPMHeight(readPPM(filename));
     }
-
-    try {
-      image = ImageIO.read(new FileInputStream(filename));
-    } catch (IOException e) {
-      throw new IllegalArgumentException("File " + filename + " not found!");
-    }
-
+    BufferedImage image = readBufferedImage(filename);
     return image.getHeight();
   }
 
   /**
    *
-   * @param filename
-   * @return
+   * @param filename the path of the file
+   * @return int width of the image
    */
   public static int getImageWidth(String filename) {
-    BufferedImage image;
-
     if (isImagePPMFile(filename)) {
       return getPPMWidth(readPPM(filename));
     }
+    BufferedImage image = readBufferedImage(filename);
+    return image.getWidth();
+  }
 
+  /**
+   *
+   * @param filename the path of the file
+   * @return
+   */
+  private static BufferedImage readBufferedImage(String filename) {
+    BufferedImage image;
     try {
       image = ImageIO.read(new FileInputStream(filename));
     } catch (IOException e) {
+      System.out.println("File " + filename + " not found!");
       throw new IllegalArgumentException("File " + filename + " not found!");
     }
+    return image;
+  }
 
-    return image.getWidth();
+  /**
+   *
+   * @param filename the path of the file
+   * @return
+   */
+  private static boolean isImagePPMFile(String filename) {
+    int index = filename.lastIndexOf('.');
+    String fileType = filename.substring(index + 1).toLowerCase();
+    return fileType.equals("ppm");
   }
 
   /**
@@ -139,23 +143,12 @@ public class ImageUtil {
   }
 
   /**
-   *
-   * @param filename
-   * @return
-   */
-  private static boolean isImagePPMFile(String filename) {
-    int index = filename.lastIndexOf('.');
-    String fileType = filename.substring(index + 1).toLowerCase();
-    return fileType.equals("ppm");
-  }
-
-  /**
    * Given the contents of a PPM file, creates a 2D array that contains the coordinates of each
    * pixel, and the RGB values represented as IPixels.
    *
    * @param contents the contents of a file formatted
    * @return IPixel[][] a 2D array that contains the coordinates of each pixel and the RGB values of
-   * each pixel
+   *         each pixel
    */
   public static IPixel[][] imageData(String contents) {
     Scanner sc;

@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 import controller.ImageController;
 import controller.ImageControllerImpl;
@@ -20,10 +19,7 @@ public class ImageProgram {
    */
   public static void main(String[] args) {
     InputStreamReader in = new InputStreamReader(System.in);
-
     for (int i = 0; i < args.length; i++) {
-
-
       if (args[i].equalsIgnoreCase("-file")) {
         try {
           File f = new File(args[i + 1]);
@@ -34,13 +30,8 @@ public class ImageProgram {
           System.out.append(e.getMessage());
           return;
         }
-
-
       }
-
     }
-
-
     ImageController c = new ImageControllerImpl(in, System.out);
     c.run();
   }
