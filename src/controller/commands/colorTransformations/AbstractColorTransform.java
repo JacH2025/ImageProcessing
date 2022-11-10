@@ -9,10 +9,12 @@ import model.ImageModelImpl;
 import model.PixelImpl;
 
 /**
- * overide trans if the transformation you are implementing is not linear.
+ * Abstract color transformation. Extend and initialize transformation matrix to implement color
+ * transform commands. Override trans(IPixel p) if the transformation you are implementing is not
+ * linear.
  */
 public abstract class AbstractColorTransform extends AbstractCommand {
-  private double[][] transMatrix;
+  private final double[][] transMatrix;
 
   /**
    * Default constructor for a command.
