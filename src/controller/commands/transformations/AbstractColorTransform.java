@@ -42,7 +42,7 @@ public abstract class AbstractColorTransform extends AbstractCommand {
         newImage[r][c] = trans(model.getPixel(r, c));
       }
     }
-    m.loadImage(new ImageModelImpl(newImage), destImageName);
+    m.getImageStored().put(destImageName, new ImageModelImpl(newImage));
   }
 
   /**

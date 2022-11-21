@@ -36,7 +36,7 @@ public class Brighten extends AbstractCommand {
         newImage[i][j] = new PixelImpl(newR, newG, newB);
       }
     }
-    m.loadImage(new ImageModelImpl(newImage), destImageName);
+    m.getImageStored().put(destImageName, new ImageModelImpl(newImage));
   }
 
 }

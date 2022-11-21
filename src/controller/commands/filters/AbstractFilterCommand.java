@@ -42,7 +42,7 @@ public abstract class AbstractFilterCommand extends AbstractCommand {
         newImage[r][c] = applyKernel(model, r, c);
       }
     }
-    m.loadImage(new ImageModelImpl(newImage), destImageName);
+    m.getImageStored().put(destImageName, new ImageModelImpl(newImage));
   }
 
   /**

@@ -101,28 +101,6 @@ public class ImageUtil {
   }
 
   /**
-   * Takes an IPixel 2D array and creates a copy as a BufferedImage.
-   *
-   * @param pixels 2D Pixel Array of an image
-   * @param height image height
-   * @param width image width
-   * @return BufferedImage representation of input image
-   */
-  public static BufferedImage createImage(IPixel[][] pixels, int height, int width) {
-    BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-    for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
-        int r = pixels[i][j].getRed();
-        int g = pixels[i][j].getGreen();
-        int b = pixels[i][j].getBlue();
-        Color color = new Color(r, g, b);
-        image.setRGB(j, i, color.getRGB());
-      }
-    }
-    return image;
-  }
-
-  /**
    * Read an image file in the PPM format and creates a string that allows other methods to parse
    * through the contents.
    *
@@ -214,35 +192,6 @@ public class ImageUtil {
       System.out.println("Invalid PPM file: plain RAW file should begin with P3");
       throw new IllegalArgumentException("Invalid PPM file: plain RAW file should begin with P3");
     }
-  }
-
-  /**
-   * Given the information of an image, format a string into the format of a PPM File that includes
-   * the file type "P3", the width and height in order, the max color value, and the rest of the
-   * pixels represented by a triplet of Red, Green, and Blue values in order.
-   *
-   * @param pixels 2D Pixel Array of an image
-   * @param height height of the image
-   * @param width  width of the image
-   * @return String formatted as a PPM File
-   */
-  public static String createPPMFile(IPixel[][] pixels, int height, int width) {
-    StringBuilder build = new StringBuilder();
-    build.append("P3\n").append(width).append(" ").append(height).append("\n").append("255\n");
-    for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
-        build.append(pixels[i][j].getRed()).append(" ");
-        build.append(pixels[i][j].getGreen()).append(" ");
-        build.append(pixels[i][j].getBlue());
-        if (j < width - 1) {
-          build.append(" ");
-        }
-      }
-      if (i < height - 1) {
-        build.append("\n");
-      }
-    }
-    return build.toString();
   }
 }
 

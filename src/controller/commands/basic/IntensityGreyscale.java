@@ -33,6 +33,6 @@ public class IntensityGreyscale extends AbstractCommand {
         newImage[i][j] = new PixelImpl(intensity, intensity, intensity);
       }
     }
-    m.loadImage(new ImageModelImpl(newImage), destImageName);
+    m.getImageStored().put(destImageName, new ImageModelImpl(newImage));
   }
 }

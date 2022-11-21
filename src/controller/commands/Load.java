@@ -1,5 +1,6 @@
 package controller.commands;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 import controller.ImageCommand;
@@ -26,6 +27,6 @@ public class Load implements ImageCommand {
 
   @Override
   public void execute(ImageModel m) {
-    m.loadImage(new ImageModelImpl(imagePath), imageName);
+    m.getImageStored().put(imageName, new ImageModelImpl(imagePath));
   }
 }

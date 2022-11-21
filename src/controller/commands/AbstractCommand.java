@@ -1,8 +1,10 @@
 package controller.commands;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 import controller.ImageCommand;
+import model.ImageModel;
 
 /**
  * Abstract base class for implementations of {@link ImageCommand}.

@@ -32,6 +32,6 @@ public class VerticalFlip extends AbstractCommand {
       }
       x++;
     }
-    m.loadImage(new ImageModelImpl(newImage), destImageName);
+    m.getImageStored().put(destImageName, new ImageModelImpl(newImage));
   }
 }

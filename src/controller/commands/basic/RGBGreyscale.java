@@ -50,6 +50,6 @@ public class RGBGreyscale extends AbstractCommand {
         newImage[i][j] = new PixelImpl(value, value, value);
       }
     }
-    m.loadImage(new ImageModelImpl(newImage), destImageName);
+    m.getImageStored().put(destImageName, new ImageModelImpl(newImage));
   }
 }

@@ -1,18 +1,10 @@
 package model;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
 
-import javax.imageio.ImageIO;
-
 import controller.ImageCommand;
 
-import static model.ImageUtil.createImage;
-import static model.ImageUtil.createPPMFile;
 import static model.ImageUtil.getImageHeight;
 import static model.ImageUtil.getImageWidth;
 import static model.ImageUtil.readImage;
@@ -26,15 +18,17 @@ public class ImageModelImpl implements ImageModel {
   private final IPixel[][] image;
   private final int width;
   private final int height;
-  private final HashMap<String, ImageModel> loadedImages = new HashMap<>();
+  private final HashMap<String, ImageModel> loadedImages;
 
   /**
    * Constructor for an Empty model that contains no images or data.
+   * Implemented to store loaded images into HashMap for the user to easily get.
    */
   public ImageModelImpl() {
     this.image = null;
     this.width = 0;
     this.height = 0;
+    this.loadedImages = new HashMap<>();
   }
 
   /**
@@ -46,6 +40,7 @@ public class ImageModelImpl implements ImageModel {
     this.image = readImage(filename);
     this.height = getImageHeight(filename);
     this.width = getImageWidth(filename);
+    this.loadedImages = null;
   }
 
   /**
@@ -61,11 +56,16 @@ public class ImageModelImpl implements ImageModel {
     }
     this.height = image.length;
     this.width = image[0].length;
+    this.loadedImages = null;
   }
 
   @Override
   public IPixel[][] getImage() {
     return this.image;
+  }
+
+  public HashMap<String, ImageModel> getImageStored() {
+    return this.loadedImages;
   }
 
   @Override
@@ -90,45 +90,6 @@ public class ImageModelImpl implements ImageModel {
   @Override
   public int getWidth() {
     return this.width;
-  }
-
-  @Override
-  public void loadImage(ImageModel image, String name) {
-    this.loadedImages.put(name, image);
-  }
-
-  @Override
-  public void save(String location, String name) {
-    ImageModel model = loadedImages.get(name);
-
-    int index = location.lastIndexOf('.');
-    String fileType = location.substring(index + 1).toLowerCase();
-    if (fileType.equals("ppm")) {
-      savePPMFile(location, name);
-      return;
-    }
-    //if file type is not specified, default to PNG File type
-    try {
-      BufferedImage image = createImage(model.getImage(), model.getHeight(), model.getWidth());
-      File file = new File(location);
-      ImageIO.write(image, fileType, file);
-    } catch (IOException e) {
-      System.out.println("File could not be Saved");
-    }
-  }
-
-  private void savePPMFile(String location, String name) throws IllegalArgumentException {
-    if (!(location.substring(location.length() - 4)).equalsIgnoreCase(".ppm")) {
-      throw new IllegalArgumentException("File name does not end with .ppm");
-    }
-    ImageModel model = loadedImages.get(name);
-    try {
-      FileOutputStream fos = new FileOutputStream(location);
-      fos.write(createPPMFile(model.getImage(), model.getHeight(), model.getWidth()).getBytes());
-      fos.close();
-    } catch (IOException e) {
-      System.out.println("File could not be Saved");
-    }
   }
 
   @Override

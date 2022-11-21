@@ -31,6 +31,6 @@ public class LumaGreyscale extends AbstractCommand {
         newImage[i][j] = new PixelImpl(luma, luma, luma);
       }
     }
-    m.loadImage(new ImageModelImpl(newImage), destImageName);
+    m.getImageStored().put(destImageName, new ImageModelImpl(newImage));
   }
 }

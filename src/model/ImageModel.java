@@ -1,5 +1,7 @@
 package model;
 
+import java.util.HashMap;
+
 /**
  * Interface for our Image Processor. Extends CommandImage so that commands can be executed on
  * ImageModel implementations.
@@ -13,6 +15,12 @@ public interface ImageModel extends CommandImage {
    * @return ImageModel
    */
   ImageModel getImageModel(String name);
+
+  /**
+   *
+   * @return
+   */
+  HashMap<String, ImageModel> getImageStored();
 
   /**
    * Returns a 2D array of IPixels that makes up an image.
@@ -43,21 +51,4 @@ public interface ImageModel extends CommandImage {
    * @return int
    */
   int getWidth();
-
-  /**
-   * Loads an image into the image model.
-   *
-   * @param image image to load.
-   * @param name  name to give to loaded image in this model.
-   */
-  void loadImage(ImageModel image, String name);
-
-  /**
-   * Attempts to save an image to the location given. Possible to save PPM file formats
-   * and Image file formats supported by ImageIO such as PNG, JPEG, and BMP.
-   *
-   * @param location path to save file to
-   * @param name     to save as
-   */
-  void save(String location, String name);
 }
