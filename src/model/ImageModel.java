@@ -9,18 +9,19 @@ import java.util.HashMap;
 public interface ImageModel extends CommandImage {
 
   /**
+   *
+   *
+   * @return HashMap
+   */
+  HashMap<String, ImageModel> getImageStored();
+
+  /**
    * Returns an image with given name (key) if such an image is loaded into the model.
    *
    * @param name name of image to get from model.
    * @return ImageModel
    */
   ImageModel getImageModel(String name);
-
-  /**
-   *
-   * @return
-   */
-  HashMap<String, ImageModel> getImageStored();
 
   /**
    * Returns a 2D array of IPixels that makes up an image.

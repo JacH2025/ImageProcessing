@@ -2,7 +2,7 @@ package view;
 
 import java.awt.*;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import java.util.Objects;
 import java.util.stream.Stream;
@@ -14,7 +14,7 @@ import model.ImageModelImpl;
  *
  */
 public class ImageHistogram extends JPanel {
-  ImageModel model;
+  private ImageModel model;
   private int[] redValues;
   private int[] greenValues;
   private int[] blueValues;
@@ -24,33 +24,40 @@ public class ImageHistogram extends JPanel {
   private final int endX = 510;
   private final int endY = 255;
 
-  public ImageHistogram() {
+  public ImageHistogram(ImageModel model) {
     super();
-    this.model = Objects.requireNonNull(new ImageModelImpl("res/Candles.png"));
-    this.redValues = this.getRedValues();
-    this.greenValues = this.getGreenValues();
-    this.blueValues = this.getBlueValues();
-    this.intensityValues = this.getIntensityValues();
-    this.setPreferredSize(new Dimension(510, 255));
+    this.setPreferredSize(new Dimension(endX, endY));
+    if (Objects.isNull(model)) {
+      this.model = null;
+    } else {
+      this.model = model;
+      this.redValues = this.getRedValues();
+      this.greenValues = this.getGreenValues();
+      this.blueValues = this.getBlueValues();
+      this.intensityValues = this.getIntensityValues();
+    }
   }
 
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
     Graphics2D graphic = (Graphics2D) g;
+    if (Objects.isNull(model)) {
+      graphic.drawString("No Image to Create Histogram", endX / 2, endY / 2);
+    } else {
+      graphic.setColor(Color.BLACK);
+      graphic.drawLine(startX, startY, startX, endY);
+      graphic.drawLine(startX, endY, endX, endY);
 
-    graphic.setColor(Color.BLACK);
-    graphic.drawLine(startX, startY, startX, endY);
-    graphic.drawLine(startX, endY, endX, endY);
-
-    graphic.setColor(Color.RED);
-    drawLineGraph(graphic, redValues);
-    graphic.setColor(Color.GREEN);
-    drawLineGraph(graphic, greenValues);
-    graphic.setColor(Color.BLUE);
-    drawLineGraph(graphic, blueValues);
-    graphic.setColor(Color.GRAY);
-    drawLineGraph(graphic, intensityValues);
+      graphic.setColor(Color.RED);
+      drawLineGraph(graphic, redValues);
+      graphic.setColor(Color.GREEN);
+      drawLineGraph(graphic, greenValues);
+      graphic.setColor(Color.BLUE);
+      drawLineGraph(graphic, blueValues);
+      graphic.setColor(Color.GRAY);
+      drawLineGraph(graphic, intensityValues);
+    }
   }
 
   /**

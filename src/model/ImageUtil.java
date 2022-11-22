@@ -193,6 +193,26 @@ public class ImageUtil {
       throw new IllegalArgumentException("Invalid PPM file: plain RAW file should begin with P3");
     }
   }
+
+
+
+  public static BufferedImage getBufferedImage(ImageModel model) {
+    int width = model.getWidth();
+    int height = model.getHeight();
+    IPixel[][] pixels = model.getImage();
+    BufferedImage image = new BufferedImage(model.getWidth(), model.getHeight(),
+        BufferedImage.TYPE_INT_RGB);
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        int r = pixels[i][j].getRed();
+        int g = pixels[i][j].getGreen();
+        int b = pixels[i][j].getBlue();
+        Color color = new Color(r, g, b);
+        image.setRGB(j, i, color.getRGB());
+      }
+    }
+    return image;
+  }
 }
 
 

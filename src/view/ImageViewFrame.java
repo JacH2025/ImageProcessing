@@ -3,28 +3,28 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowStateListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Objects;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controller.Features;
 import model.ImageModel;
+import model.ImageModelImpl;
+import model.ImageUtil;
 
 /**
  *
  */
 public class ImageViewFrame extends JFrame implements ImageView, ActionListener {
   private ImageModel model;
+  private ImageHistogram histogram;
   private JPanel mainPanel;
   private JPanel imagePanel;
   private JPanel histogramPanel;
   private JPanel inputPanel;
-  private JScrollPane mainScrollPane;
-  private JTextArea commands;
+  private JLabel imageLabel;
   private JTextField input;
   private JTextArea message;
 
@@ -48,7 +48,7 @@ public class ImageViewFrame extends JFrame implements ImageView, ActionListener 
   private void addMainLayout() {
     mainPanel = new JPanel();
     mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
-    mainScrollPane = new JScrollPane(mainPanel);
+    JScrollPane mainScrollPane = new JScrollPane(mainPanel);
     this.add(mainScrollPane);
   }
 
@@ -57,27 +57,21 @@ public class ImageViewFrame extends JFrame implements ImageView, ActionListener 
     histogramPanel.setBorder(BorderFactory.createTitledBorder("Histogram"));
     histogramPanel.setLayout(new FlowLayout());
     mainPanel.add(histogramPanel, BorderLayout.EAST);
-    ImageHistogram histogram = new ImageHistogram();
+    histogram = new ImageHistogram(model);
     histogramPanel.add(histogram, BorderLayout.CENTER);
   }
 
   private void addImageViewer() {
     imagePanel = new JPanel();
-    imagePanel.setBorder(BorderFactory.createTitledBorder("Images Loaded"));
+    imagePanel.setBorder(BorderFactory.createTitledBorder("Current Image"));
     imagePanel.setLayout(new GridLayout(1, 0, 10, 10) );
+
+    imageLabel = new JLabel();
+    JScrollPane imageScrollPane = new JScrollPane(imageLabel);
+    imageScrollPane.setPreferredSize(new Dimension(200, 200));
+
+    imagePanel.add(imageScrollPane, BorderLayout.CENTER);
     mainPanel.add(imagePanel, BorderLayout.WEST);
-
-    String[] images = {"res/Clouds.jpg", "res/Candles.png"};
-    JLabel[] imageLabel = new JLabel[images.length];
-    JScrollPane[] imageScrollPane = new JScrollPane[images.length];
-
-    for (int i = 0; i < imageLabel.length; i++) {
-      imageLabel[i] = new JLabel();
-      imageScrollPane[i] = new JScrollPane(imageLabel[i]);
-      imageLabel[i].setIcon(new ImageIcon(images[i]));
-      imageScrollPane[i].setPreferredSize(new Dimension(200, 200));
-      imagePanel.add(imageScrollPane[i]);
-    }
   }
 
   private void addInputPanel() {
@@ -92,14 +86,15 @@ public class ImageViewFrame extends JFrame implements ImageView, ActionListener 
   private void addTextInputBox() {
     input = new JTextField(25);
     input.setBorder(BorderFactory.createTitledBorder("Input Command Text"));
-    input.setText("Input help (h) for commands or quit (q) to quit");
     input.setActionCommand("\n");
     inputPanel.add(input);
   }
 
   private void addMessageOutput() {
     message = new JTextArea();
+    message.setBorder(BorderFactory.createTitledBorder("Messages"));
     message.setEditable(false);
+    message.setWrapStyleWord(true);
     inputPanel.add(message);
   }
 
@@ -145,6 +140,13 @@ public class ImageViewFrame extends JFrame implements ImageView, ActionListener 
   @Override
   public void addFeatures(Features f) {
     input.addActionListener(evt -> f.getInput(input.getText()));
+  }
+
+  public void setCurrentImage(ImageModel model) {
+    this.model = model;
+    this.histogram.repaint();
+    BufferedImage bufferedImage = ImageUtil.getBufferedImage(model);
+    imageLabel.setIcon(new ImageIcon(bufferedImage));
   }
 
   @Override

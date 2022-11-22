@@ -60,10 +60,6 @@ public class ImageModelImpl implements ImageModel {
   }
 
   @Override
-  public IPixel[][] getImage() {
-    return this.image;
-  }
-
   public HashMap<String, ImageModel> getImageStored() {
     return this.loadedImages;
   }
@@ -78,8 +74,13 @@ public class ImageModelImpl implements ImageModel {
   }
 
   @Override
+  public IPixel[][] getImage() {
+    return this.image;
+  }
+
+  @Override
   public IPixel getPixel(int x, int y) {
-    return image[x][y];
+    return this.image[x][y];
   }
 
   @Override

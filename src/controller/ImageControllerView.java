@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
@@ -73,7 +74,7 @@ public class ImageControllerView implements Features {
     view.makeVisible();
   }
 
-  public void process(String input) throws IllegalStateException {
+  private void process(String input) throws IllegalStateException {
     Scanner sc = new Scanner(input);
     boolean quit = false;
 
@@ -167,6 +168,8 @@ public class ImageControllerView implements Features {
   @Override
   public void getInput(String input) {
     this.process(input);
+    view.setCurrentImage(model.getImageModel(input.substring(input.lastIndexOf(" ") + 1)));
+    view.refresh();
     view.clearInputString();
   }
 }

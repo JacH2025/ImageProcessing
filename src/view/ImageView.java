@@ -1,6 +1,7 @@
 package view;
 
 import controller.Features;
+import model.ImageModel;
 
 /**
  *
@@ -13,14 +14,30 @@ public interface ImageView {
    */
   void renderMessage(String message);
 
-  void addFeatures(Features f);
-
-  void clearInputString();
-
+  /**
+   *
+   */
   void makeVisible();
 
   /**
    *
    */
   void refresh();
+
+  /**
+   *
+   * @param f
+   */
+  void addFeatures(Features f);
+
+  /**
+   *
+   * @param model
+   */
+  void setCurrentImage(ImageModel model);
+
+  /**
+   *
+   */
+  void clearInputString();
 }
