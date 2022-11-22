@@ -11,18 +11,16 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controller.Features;
 import model.ImageModel;
-import model.ImageModelImpl;
 import model.ImageUtil;
 
 /**
  *
  */
 public class ImageViewFrame extends JFrame implements ImageView, ActionListener {
-  private ImageModel model;
-  private ImageHistogram histogram;
   private JPanel mainPanel;
   private JPanel imagePanel;
   private JPanel histogramPanel;
+  private JPanel histogram;
   private JPanel inputPanel;
   private JLabel imageLabel;
   private JTextField input;
@@ -56,9 +54,9 @@ public class ImageViewFrame extends JFrame implements ImageView, ActionListener 
     histogramPanel = new JPanel();
     histogramPanel.setBorder(BorderFactory.createTitledBorder("Histogram"));
     histogramPanel.setLayout(new FlowLayout());
-    mainPanel.add(histogramPanel, BorderLayout.EAST);
-    histogram = new ImageHistogram(model);
+    histogram = new JPanel();
     histogramPanel.add(histogram, BorderLayout.CENTER);
+    mainPanel.add(histogramPanel, BorderLayout.EAST);
   }
 
   private void addImageViewer() {
@@ -143,10 +141,11 @@ public class ImageViewFrame extends JFrame implements ImageView, ActionListener 
   }
 
   public void setCurrentImage(ImageModel model) {
-    this.model = model;
-    this.histogram.repaint();
     BufferedImage bufferedImage = ImageUtil.getBufferedImage(model);
     imageLabel.setIcon(new ImageIcon(bufferedImage));
+    histogramPanel.remove(histogram);
+    histogram = new ImageHistogram(model);
+    histogramPanel.add(histogram, BorderLayout.CENTER);
   }
 
   @Override

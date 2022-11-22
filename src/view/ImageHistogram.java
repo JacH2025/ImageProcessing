@@ -3,6 +3,7 @@ package view;
 import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
 import java.util.Objects;
 import java.util.stream.Stream;

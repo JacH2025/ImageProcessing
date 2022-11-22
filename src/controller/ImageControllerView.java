@@ -111,7 +111,6 @@ public class ImageControllerView implements Features {
       try {
         c = cmd.apply(sc);
         model.execute(c);
-        view.refresh();
         view.renderMessage(instruction + " executed" + System.lineSeparator());
       } catch (Exception e) {
         System.out.println(e.getMessage());
@@ -169,7 +168,7 @@ public class ImageControllerView implements Features {
   public void getInput(String input) {
     this.process(input);
     view.setCurrentImage(model.getImageModel(input.substring(input.lastIndexOf(" ") + 1)));
-    view.refresh();
     view.clearInputString();
+    view.refresh();
   }
 }
