@@ -1,6 +1,6 @@
 package controller.commands;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -12,7 +12,6 @@ import javax.imageio.ImageIO;
 import controller.ImageCommand;
 import model.IPixel;
 import model.ImageModel;
-import model.ImageModelImpl;
 
 /**
  * Command object to save an image.
@@ -34,7 +33,6 @@ public class Save implements ImageCommand {
 
   @Override
   public void execute(ImageModel m) {
-//    m.save(imagePath, imageName);
     ImageModel model = m.getImageModel(imageName);
     save(imagePath, model);
   }

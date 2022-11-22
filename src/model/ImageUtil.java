@@ -194,8 +194,11 @@ public class ImageUtil {
     }
   }
 
-
-
+  /**
+   *
+   * @param model
+   * @return
+   */
   public static BufferedImage getBufferedImage(ImageModel model) {
     int width = model.getWidth();
     int height = model.getHeight();

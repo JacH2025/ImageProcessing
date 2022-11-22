@@ -1,12 +1,29 @@
 package view;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controller.Features;
@@ -26,7 +43,7 @@ public class ImageViewFrame extends JFrame implements ImageView, ActionListener 
   private JTextField input;
   private JTextArea message;
 
-  private JList<String> listOfStrings;
+//  private JList<String> listOfStrings;
 
   public ImageViewFrame() {
     super();

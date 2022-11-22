@@ -1,6 +1,5 @@
 package controller.commands;
 
-import java.util.HashMap;
 import java.util.Objects;
 
 import controller.ImageCommand;

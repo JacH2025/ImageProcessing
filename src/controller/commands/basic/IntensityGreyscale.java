@@ -1,6 +1,5 @@
 package controller.commands.basic;
 
-
 import controller.commands.AbstractCommand;
 import model.IPixel;
 import model.ImageModel;

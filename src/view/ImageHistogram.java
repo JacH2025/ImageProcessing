@@ -1,21 +1,22 @@
 package view;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Color;
 
-import javax.swing.*;
-import javax.swing.border.Border;
+import javax.swing.JPanel;
 
 import java.util.Objects;
 import java.util.stream.Stream;
 import model.IPixel;
 import model.ImageModel;
-import model.ImageModelImpl;
 
 /**
  *
  */
 public class ImageHistogram extends JPanel {
-  private ImageModel model;
+  private final ImageModel model;
   private int[] redValues;
   private int[] greenValues;
   private int[] blueValues;

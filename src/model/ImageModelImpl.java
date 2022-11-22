@@ -68,7 +68,7 @@ public class ImageModelImpl implements ImageModel {
   public ImageModel getImageModel(String name) {
     ImageModel image = loadedImages.getOrDefault(name, null);
     if (image == null) {
-      throw new IllegalArgumentException(String.format("image named %s has not been loaded", name));
+      throw new IllegalArgumentException(String.format("Image named %s has not been loaded", name));
     }
     return image;
   }

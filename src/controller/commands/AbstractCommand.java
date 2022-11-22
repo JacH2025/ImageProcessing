@@ -1,10 +1,8 @@
 package controller.commands;
 
-import java.util.HashMap;
 import java.util.Objects;
 
 import controller.ImageCommand;
-import model.ImageModel;
 
 /**
  * Abstract base class for implementations of {@link ImageCommand}.
@@ -23,6 +21,4 @@ public abstract class AbstractCommand implements ImageCommand {
     this.imageName = Objects.requireNonNull(imageName, "name cannot be null");
     this.destImageName = Objects.requireNonNull(destImageName, "name cannot be null");
   }
-
-
 }

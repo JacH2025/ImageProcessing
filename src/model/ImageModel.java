@@ -9,9 +9,9 @@ import java.util.HashMap;
 public interface ImageModel extends CommandImage {
 
   /**
+   * Returns the HashMap that stores other ImageModels.
    *
-   *
-   * @return HashMap
+   * @return HashMap String key that links to an ImageModel
    */
   HashMap<String, ImageModel> getImageStored();
 
@@ -42,14 +42,14 @@ public interface ImageModel extends CommandImage {
    * Returns the height of the image. (Measured through the amount of pixels that spans the
    * height).
    *
-   * @return int
+   * @return int height
    */
   int getHeight();
 
   /**
    * Returns the width of the image. (Measured through the amount of pixels that spans the width).
    *
-   * @return int
+   * @return int width
    */
   int getWidth();
 }
