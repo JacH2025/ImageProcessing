@@ -13,7 +13,9 @@ import model.IPixel;
 import model.ImageModel;
 
 /**
- *
+ * Represents an Image's Histogram that creates line graphs that showcases the amount of
+ * red, green, blur, and intense components an image has by matching their value from
+ * 0 to 255. Creates a visual graph that can then be added to a main frame.
  */
 public class ImageHistogram extends JPanel {
   private final ImageModel model;
@@ -24,8 +26,14 @@ public class ImageHistogram extends JPanel {
   private final int startX = 0;
   private final int startY = 0;
   private final int endX = 510;
-  private final int endY = 255;
+  private final int endY = 300;
 
+  /**
+   * Constructs the ImageHistogram by taking in an image's data and creating
+   * the visual panel of the graph.
+   *
+   * @param model ImageModel
+   */
   public ImageHistogram(ImageModel model) {
     super();
     this.setPreferredSize(new Dimension(endX, endY));
@@ -62,11 +70,6 @@ public class ImageHistogram extends JPanel {
     }
   }
 
-  /**
-   *
-   * @param graphic
-   * @param component
-   */
   private void drawLineGraph(Graphics2D graphic, int[] component) {
     int prevX = startX;
     int prevY = endY;

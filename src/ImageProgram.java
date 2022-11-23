@@ -15,7 +15,6 @@ import view.ImageViewFrame;
  */
 public class ImageProgram {
 
-
   /**
    * Run the Image Processing Program in the console. Script inputs are allowed.
    *
@@ -33,7 +32,7 @@ public class ImageProgram {
         case "-f":
           //text = true;
           if (i + 1 < args.length) {
-            in = setinput(args[i + 1]);
+            in = setInput(args[i + 1]);
             if (in == null) {
               System.out.printf("could not find file: %S%nProgram will exit%n", args[i + 1]);
               return;
@@ -42,7 +41,6 @@ public class ImageProgram {
           } else {
             System.out.print("file argument must be followed by a filepath" + System.lineSeparator());
           }
-
         case "-text":
         case "-t":
           text = true;
@@ -50,12 +48,9 @@ public class ImageProgram {
         default:
           System.out.printf("unrecognized command: %S%nProgram will exit%n", args[i]);
           return;
-
       }
-
     }
     startProgram(in, text);
-
   }
 
   private static void startProgram(Readable in, boolean text) {
@@ -67,12 +62,11 @@ public class ImageProgram {
     new ImageControllerView(frame).run();
   }
 
-  private static InputStreamReader setinput(String arg) {
+  private static InputStreamReader setInput(String arg) {
     try {
       File f = new File(arg);
       if (f.exists() && f.isFile()) {
-        InputStreamReader in = new InputStreamReader(new FileInputStream(f));
-        return in;
+        return new InputStreamReader(new FileInputStream(f));
       }
     } catch (FileNotFoundException e) {
       System.out.append(e.getMessage());

@@ -23,11 +23,21 @@ import model.ImageModel;
 import model.ImageModelImpl;
 import view.ImageView;
 
-public class ImageControllerView implements Features {
+/**
+ * Controller for an interactive view that communicates between the ImageModel and the
+ * ImageView by taking in user input from the view and commanding changes within the ImageModel.
+ */
+public class ImageControllerView implements Features, ImageController {
   private final ImageModel model;
   private final ImageView view;
   private final Map<String, Function<Scanner, ImageCommand>> commands;
 
+  /**
+   * Constructs the controller that takes in the view (GUI) and passes the controller to
+   * the view.
+   *
+   * @param view ImageView
+   */
   public ImageControllerView(ImageView view) {
     this.model = new ImageModelImpl();
     this.view = Objects.requireNonNull(view);
@@ -68,6 +78,7 @@ public class ImageControllerView implements Features {
         , (Scanner s) -> new SepiaTone(s.next(), s.next()));
   }
 
+  @Override
   public void run() {
     welcomeMessage();
     view.makeVisible();
@@ -99,7 +110,7 @@ public class ImageControllerView implements Features {
    * Attempts to run a command.
    *
    * @param instruction name of command to run
-   * @param sc          scanner
+   * @param sc scanner
    */
   private void processCommand(String instruction, Scanner sc) {
     ImageCommand c;
@@ -120,8 +131,6 @@ public class ImageControllerView implements Features {
 
   private void printHelp() {
     StringBuilder helpMenu = new StringBuilder();
-    helpMenu.append("This image processor supports the following operations:")
-        .append(System.lineSeparator());
     helpMenu.append("load: imagePath, imageName")
         .append(System.lineSeparator());
     helpMenu.append("save: imagePath, imageName")

@@ -82,7 +82,7 @@ public class Save implements ImageCommand {
    * @param width image width
    * @return BufferedImage representation of input image
    */
-  public static BufferedImage createImage(IPixel[][] pixels, int height, int width) {
+  private BufferedImage createImage(IPixel[][] pixels, int height, int width) {
     BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
@@ -106,7 +106,7 @@ public class Save implements ImageCommand {
    * @param width  width of the image
    * @return String formatted as a PPM File
    */
-  public static String createPPMFile(IPixel[][] pixels, int height, int width) {
+  private String createPPMFile(IPixel[][] pixels, int height, int width) {
     StringBuilder build = new StringBuilder();
     build.append("P3\n").append(width).append(" ").append(height).append("\n").append("255\n");
     for (int i = 0; i < height; i++) {

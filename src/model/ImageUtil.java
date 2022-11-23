@@ -195,16 +195,16 @@ public class ImageUtil {
   }
 
   /**
+   * Takes an ImageModel and creates a copy as a BufferedImage to display.
    *
-   * @param model
-   * @return
+   * @param model ImageModel of the image
+   * @return BufferedImage
    */
   public static BufferedImage getBufferedImage(ImageModel model) {
     int width = model.getWidth();
     int height = model.getHeight();
     IPixel[][] pixels = model.getImage();
-    BufferedImage image = new BufferedImage(model.getWidth(), model.getHeight(),
-        BufferedImage.TYPE_INT_RGB);
+    BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         int r = pixels[i][j].getRed();

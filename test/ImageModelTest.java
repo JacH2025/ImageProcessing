@@ -8,6 +8,7 @@ import model.PixelImpl;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests for {@link ImageModelImpl}.
@@ -46,6 +47,14 @@ public class ImageModelTest {
   }
 
   @Test
+  public void testGetImageModelHashMap() {
+    ImageModel storage = new ImageModelImpl();
+    assertTrue(storage.getImageStored().isEmpty());
+    storage.getImageStored().put("6Color", new ImageModelImpl("res/6Color.ppm"));
+    assertTrue(!storage.getImageStored().isEmpty());
+  }
+
+  @Test
   public void testGetImageModelFromHashMap() {
     ImageModel storage = new ImageModelImpl();
     storage.getImageStored().put("6Color", new ImageModelImpl("res/6Color.ppm"));
@@ -57,7 +66,7 @@ public class ImageModelTest {
   }
 
   @Test
-  public void testImageHeight() {
+  public void testGetImageHeight() {
     assertEquals(2, colorsPPM.getHeight());
     assertEquals(2, colorPNG.getHeight());
     assertEquals(72, candles.getHeight());
@@ -66,66 +75,11 @@ public class ImageModelTest {
   }
 
   @Test
-  public void testImageWidth() {
+  public void testGetImageWidth() {
     assertEquals(3, colorsPPM.getWidth());
     assertEquals(3, colorPNG.getWidth());
     assertEquals(90, candles.getWidth());
     assertEquals(90, clouds.getWidth());
     assertEquals(85, mountains.getWidth());
   }
-
-//  @Test
-//  public void testLoadPPMImageFromModel() {
-//    ImageModel storage = new ImageModelImpl();
-//    try {
-//      storage.getImageModel("6Color");
-//      fail();
-//    } catch (IllegalArgumentException e) {
-//      e.getMessage();
-//    }
-//
-//    storage.loadImage(new ImageModelImpl("res/6color.ppm"), "6ColorPPM");
-//    storage.loadImage(new ImageModelImpl("res/6color.png"), "6ColorPNG");
-//
-//    try {
-//      storage.getImageModel("6ColorPPM");
-//    } catch (IllegalArgumentException e) {
-//      e.getMessage();
-//    }
-//    try {
-//      storage.getImageModel("6ColorPNG");
-//    } catch (IllegalArgumentException e) {
-//      e.getMessage();
-//    }
-//    try {
-//      storage.getImageModel("ImageDoesNotExist");
-//      fail();
-//    } catch (IllegalArgumentException e) {
-//      e.getMessage();
-//    }
-//  }
-//
-//  @Test
-//  public void testSaveImageFromModel() {
-//    ImageModel storage = new ImageModelImpl();
-//    storage.loadImage(new ImageModelImpl("res/6Color.ppm"), "6Color");
-//    storage.save("res/test-6Color.png", "6Color");
-//    storage.loadImage(new ImageModelImpl("res/test-6Color.png"), "6ColorPNG");
-//    storage.save("res/test-6Color.ppm", "6ColorPNG");
-//
-//    assertArrayEquals(new ImageModelImpl("res/test-6Color.png").getImage(),
-//        new ImageModelImpl("res/6Color.ppm").getImage());
-//    assertArrayEquals(new ImageModelImpl("res/test-6Color.ppm").getImage(),
-//        new ImageModelImpl("res/6Color.ppm").getImage());
-//  }
-//
-//  @Test
-//  public void testSavePPMImageFromModel() {
-//    ImageModel storage = new ImageModelImpl();
-//    storage.loadImage(new ImageModelImpl("res/6Color.ppm"), "6Color");
-//    storage.save("res/test-6color.ppm", "6Color");
-//
-//    assertArrayEquals(new ImageModelImpl("res/test-6Color.ppm").getImage(),
-//        new ImageModelImpl("res/6Color.ppm").getImage());
-//  }
 }
