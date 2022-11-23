@@ -4,10 +4,10 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.Locale;
 
+import controller.ImageControllerFeat;
 import controller.ImageControllerImpl;
-import controller.ImageControllerView;
 import view.ImageView;
-import view.ImageViewFrame;
+import view.ImageViewFeat;
 
 /**
  * Image Program created as the entry point to the Image Processing program. Allows you to use
@@ -53,13 +53,14 @@ public class ImageProgram {
     startProgram(in, text);
   }
 
+
   private static void startProgram(Readable in, boolean text) {
     if (text) {
       new ImageControllerImpl(in, System.out).run();
       return;
     }
-    ImageView frame = new ImageViewFrame();
-    new ImageControllerView(frame).run();
+    ImageView frame = new ImageViewFeat();
+    new ImageControllerFeat(frame);
   }
 
   private static InputStreamReader setInput(String arg) {
