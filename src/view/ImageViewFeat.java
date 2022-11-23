@@ -120,7 +120,7 @@ public class ImageViewFeat extends JFrame implements ImageView {
     selectFile.setLayout(new BoxLayout(selectFile, BoxLayout.PAGE_AXIS));
     inputPanel.add(saveFile);
 
-    JButton fileOpenButton = new JButton("Open path");
+    JButton fileOpenButton = new JButton("load path");
     selectFile.add(fileOpenButton);
     fileOpenButton.addActionListener(evt -> fileOpener("load"));
 
@@ -141,20 +141,20 @@ public class ImageViewFeat extends JFrame implements ImageView {
     inputPanel.setLayout(new FlowLayout());
     mainPanel.add(inputPanel);
 
-    imageName = new JTextField(8);
-    imageName.setBorder(BorderFactory.createTitledBorder("image Name"));
+    imageName = new JTextField(9);
+    imageName.setBorder(BorderFactory.createTitledBorder("image name"));
 
-    addAs = new JTextField(8);
-    addAs.setBorder(BorderFactory.createTitledBorder("new image name"));
+    addAs = new JTextField(9);
+    addAs.setBorder(BorderFactory.createTitledBorder("new name"));
 
-    imagePath = new JTextField(8);
+    imagePath = new JTextField(15);
     imagePath.setBorder(BorderFactory.createTitledBorder("load path"));
 
-    savePath = new JTextField(8);
+    savePath = new JTextField(15);
     savePath.setBorder(BorderFactory.createTitledBorder("save path"));
 
-    brightIncrement = new JTextField(2);
-    brightIncrement.setBorder(BorderFactory.createTitledBorder("brighten increment"));
+    brightIncrement = new JTextField(5);
+    brightIncrement.setBorder(BorderFactory.createTitledBorder("brighten"));
 
 
     inputPanel.add(imageName);
@@ -331,8 +331,8 @@ public class ImageViewFeat extends JFrame implements ImageView {
    */
   @Override
   public void clearInputString() {
+    imageName.setText(addAs.getText());
     addAs.setText("");
-    imageName.setText("");
     imagePath.setText("");
     savePath.setText("");
 
