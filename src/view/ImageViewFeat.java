@@ -117,7 +117,7 @@ public class ImageViewFeat extends JFrame implements ImageView {
     selectFile.setLayout(new BoxLayout(selectFile, BoxLayout.PAGE_AXIS));
     inputPanel.add(saveFile);
 
-    JButton fileOpenButton = new JButton("Open path");
+    JButton fileOpenButton = new JButton("load path");
     selectFile.add(fileOpenButton);
     fileOpenButton.addActionListener(evt -> fileOpener("load"));
 
@@ -139,10 +139,10 @@ public class ImageViewFeat extends JFrame implements ImageView {
     mainPanel.add(inputPanel);
 
     imageName = new JTextField(8);
-    imageName.setBorder(BorderFactory.createTitledBorder("image Name"));
+    imageName.setBorder(BorderFactory.createTitledBorder("image name"));
 
     addAs = new JTextField(8);
-    addAs.setBorder(BorderFactory.createTitledBorder("new image name"));
+    addAs.setBorder(BorderFactory.createTitledBorder("new name"));
 
     imagePath = new JTextField(8);
     imagePath.setBorder(BorderFactory.createTitledBorder("load path"));
@@ -150,8 +150,8 @@ public class ImageViewFeat extends JFrame implements ImageView {
     savePath = new JTextField(8);
     savePath.setBorder(BorderFactory.createTitledBorder("save path"));
 
-    brightIncrement = new JTextField(2);
-    brightIncrement.setBorder(BorderFactory.createTitledBorder("brighten increment"));
+    brightIncrement = new JTextField(5);
+    brightIncrement.setBorder(BorderFactory.createTitledBorder("brighten"));
 
 
     inputPanel.add(imageName);
@@ -328,8 +328,8 @@ public class ImageViewFeat extends JFrame implements ImageView {
    */
   @Override
   public void clearInputString() {
+    imageName.setText(addAs.getText());
     addAs.setText("");
-    imageName.setText("");
     imagePath.setText("");
     savePath.setText("");
 
