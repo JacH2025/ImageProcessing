@@ -28,11 +28,142 @@ public class ImageControllerMock implements Features, ImageController {
   }
 
   @Override
-  public void getInput(String input) {
+  public void loadImage(String imagePath, String imageName) {
     try {
-      this.appendable.append(input);
+      this.appendable.append(imagePath + " " + imageName);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  @Override
+  public void saveImageAs(String imagePath, String imageName) {
+    try {
+      this.appendable.append(imagePath + " " + imageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void flipHorizontal(String imageName, String destImageName) {
+    try {
+      this.appendable.append(imageName + " " + destImageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void flipVertical(String imageName, String destImageName) {
+    try {
+      this.appendable.append(imageName + " " + destImageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void brighten(int i, String imageName, String destImageName) {
+    try {
+      this.appendable.append(imageName + " " + destImageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void intensityGrey(String imageName, String destImageName) {
+    try {
+      this.appendable.append(imageName + " " + destImageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void lumaGrey(String imageName, String destImageName) {
+    try {
+      this.appendable.append(imageName + " " + destImageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void valueGrey(String imageName, String destImageName) {
+    try {
+      this.appendable.append(imageName + " " + destImageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void redGrey(String imageName, String destImageName) {
+    try {
+      this.appendable.append(imageName + " " + destImageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void greenGrey(String imageName, String destImageName) {
+    try {
+      this.appendable.append(imageName + " " + destImageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void blueGrey(String imageName, String destImageName) {
+    try {
+      this.appendable.append(imageName + " " + destImageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void transGrey(String imageName, String destImageName) {
+    try {
+      this.appendable.append(imageName + " " + destImageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void blur(String imageName, String destImageName) {
+    try {
+      this.appendable.append(imageName + " " + destImageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void sharpen(String imageName, String destImageName) {
+    try {
+      this.appendable.append(imageName + " " + destImageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void sepia(String imageName, String destImageName) {
+    try {
+      this.appendable.append(imageName + " " + destImageName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public void exitProgram() {
+    throw new IllegalStateException();
   }
 }

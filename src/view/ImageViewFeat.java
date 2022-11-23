@@ -11,6 +11,9 @@ import controller.Features;
 import model.ImageModel;
 import model.ImageUtil;
 
+/**
+ *
+ */
 public class ImageViewFeat extends JFrame implements ImageView {
 
   private JMenuBar operations;
@@ -353,5 +356,9 @@ public class ImageViewFeat extends JFrame implements ImageView {
     }
   }
 
+  //for testing purposes
+  private void setComponentName() {
+
+  }
 }
 

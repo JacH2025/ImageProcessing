@@ -185,7 +185,7 @@ public class ImageViewFrame extends JFrame implements ImageView, ActionListener 
 
   @Override
   public void addFeatures(Features f) {
-    input.addActionListener(evt -> f.getInput(input.getText()));
+//    input.addActionListener(evt -> f.getInput(input.getText()));
   }
 
   @Override

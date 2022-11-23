@@ -172,11 +172,91 @@ public class ImageControllerView implements Features, ImageController {
     view.renderMessage(welcomeMessage.toString());
   }
 
+//  @Override
+//  public void getInput(String input) {
+//    this.process(input);
+//    view.setCurrentImage(model.getImageModel(input.substring(input.lastIndexOf(" ") + 1)));
+//    view.clearInputString();
+//    view.refresh();
+//  }
+
   @Override
-  public void getInput(String input) {
-    this.process(input);
-    view.setCurrentImage(model.getImageModel(input.substring(input.lastIndexOf(" ") + 1)));
-    view.clearInputString();
-    view.refresh();
+  public void loadImage(String imagePath, String imageName) {
+
+  }
+
+  @Override
+  public void saveImageAs(String imagePath, String imageName) {
+
+  }
+
+  @Override
+  public void flipHorizontal(String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public void flipVertical(String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public void brighten(int i, String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public void intensityGrey(String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public void lumaGrey(String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public void valueGrey(String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public void redGrey(String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public void greenGrey(String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public void blueGrey(String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public void transGrey(String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public void blur(String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public void sharpen(String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public void sepia(String imageName, String destImageName) {
+
+  }
+
+  @Override
+  public void exitProgram() {
+
   }
 }
