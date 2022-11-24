@@ -1,7 +1,7 @@
 package controller;
 
 
-import java.util.Objects;
+import  java.util.Objects;
 
 import controller.commands.Load;
 import controller.commands.Save;
@@ -20,17 +20,23 @@ import model.ImageModel;
 import model.ImageModelImpl;
 import view.ImageView;
 
+/**
+ *
+ */
 public class ImageControllerFeat implements Features {
   private ImageView view;
   private ImageModel model;
 
+  /**
+   *
+   *
+   * @param v
+   */
   public ImageControllerFeat(ImageView v) {
     this.view = Objects.requireNonNull(v);
     this.model = new ImageModelImpl();
     view.addFeatures(this);
-
   }
-
 
   @Override
   public void exitProgram() {

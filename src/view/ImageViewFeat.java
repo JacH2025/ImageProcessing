@@ -66,6 +66,7 @@ public class ImageViewFeat extends JFrame implements ImageView {
     addMessageOutput();
     addIOFileButtons();
     initMenuLayout();
+    setComponentName();
 
     pack();
     setVisible(true);
@@ -245,7 +246,6 @@ public class ImageViewFeat extends JFrame implements ImageView {
   @Override
   public void refresh() {
     this.repaint();
-
   }
 
   /**
@@ -256,15 +256,6 @@ public class ImageViewFeat extends JFrame implements ImageView {
   @Override
   public void renderMessage(String message) {
     this.message.setText(message);
-
-  }
-
-  /**
-   * Makes the view visible on the screen.
-   */
-  @Override
-  public void makeVisible() {
-    this.setVisible(true);
 
   }
 
@@ -358,7 +349,15 @@ public class ImageViewFeat extends JFrame implements ImageView {
 
   //for testing purposes
   private void setComponentName() {
-
+    file.setName("fileMenu");
+    load.setName("load");
+    blur.setName("blur");
+    horz.setName("horizontalFlip");
+    addAs.setName("addAs");
+    imageName.setName("imageName");
+    imagePath.setName("imagePath");
+    imageLabel.setName("imageLabel");
+    histogram.setName("histogram");
   }
 }
 

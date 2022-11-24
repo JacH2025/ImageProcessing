@@ -23,11 +23,6 @@ public interface ImageView {
   void renderMessage(String message);
 
   /**
-   * Makes the view visible on the screen.
-   */
-  void makeVisible();
-
-  /**
    * Allows the view to link actions set to send responses to the controller.
    *
    * @param f Features
