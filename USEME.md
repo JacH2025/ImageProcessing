@@ -6,7 +6,7 @@
 ### How to Use Image Processor GUI
 
 the gui is able to do all the operations of the text based image processor. Use Command-line
-argument -text or -t to use the text scripting mode.
+argument <b>-text</b> or <b>-t</b> to use the text scripting mode.
 
 #### menu
 
