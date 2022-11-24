@@ -12,7 +12,9 @@ import model.ImageModel;
 import model.ImageUtil;
 
 /**
- *
+ * ImageViewFeat is a swing Viewer for ImageModel. it can display images, and a histogram which
+ * gives information about the current image. it is able to provide input for all of the the methods
+ * in the Features interface.
  */
 public class ImageViewFeat extends JFrame implements ImageView {
 
@@ -27,7 +29,19 @@ public class ImageViewFeat extends JFrame implements ImageView {
 
 
   // Menu items
-  private static JMenuItem brighten, horz, vert, intensity, transGreyscale, luma, red, blue, green, value, blur, sharpen, sepia;
+  private JMenuItem brighten;
+  private JMenuItem horz;
+  private JMenuItem vert;
+  private JMenuItem intensity;
+  private JMenuItem transGreyscale;
+  private JMenuItem luma;
+  private JMenuItem red;
+  private JMenuItem blue;
+  private JMenuItem green;
+  private JMenuItem value;
+  private JMenuItem blur;
+  private JMenuItem sharpen;
+  private JMenuItem sepia;
   private JMenuItem load;
 
   private JMenuItem save;
@@ -42,7 +56,7 @@ public class ImageViewFeat extends JFrame implements ImageView {
   private JLabel imageLabel;
   private JTextArea message;
 
-  //inputs for menu comands
+  //inputs for menu commands
   private JTextField imageName;
   private JTextField addAs;
   private JTextField imagePath;
@@ -110,6 +124,9 @@ public class ImageViewFeat extends JFrame implements ImageView {
     mainPanel.add(imagePanel, BorderLayout.WEST);
   }
 
+  /*
+  setup file buttons.
+   */
   private void addIOFileButtons() {
     JPanel selectFile = new JPanel();
     selectFile.setBorder(BorderFactory.createTitledBorder("load File"));
@@ -166,6 +183,9 @@ public class ImageViewFeat extends JFrame implements ImageView {
     mainPanel.add(inputPanel);
   }
 
+  /*
+  setup menu bar.
+   */
   private void initMenuLayout() {
     operations = new JMenuBar();
     editImage = new JMenu("Edit Image");
@@ -223,14 +243,15 @@ public class ImageViewFeat extends JFrame implements ImageView {
     editImage.add(flip);
 
 
-
-
     exit = new JButton("exit");
     operations.add(exit);
     this.setJMenuBar(operations);
 
   }
 
+  /*
+  setup output message panel.
+   */
   private void addMessageOutput() {
     message = new JTextArea();
     message.setBorder(BorderFactory.createTitledBorder("Messages"));
@@ -329,10 +350,13 @@ public class ImageViewFeat extends JFrame implements ImageView {
 
   }
 
+  /*
+  helper method for pop-up file menu.
+   */
   private void fileOpener(String s) {
     final JFileChooser fileChooser = new JFileChooser(".");
     FileNameExtensionFilter filter = new FileNameExtensionFilter(
-        "JPG pgn ppm bmp", "jpg", "png", "ppm", "bmp");
+        "jpg png ppm bmp", "jpg", "png", "ppm", "bmp");
     fileChooser.setFileFilter(filter);
     int retValue = fileChooser.showOpenDialog(null);
     if (retValue == JFileChooser.APPROVE_OPTION) {

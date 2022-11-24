@@ -16,8 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 /**
- * Tests for {@link ImageViewFeat}.
- * Tests for {@link ImageControllerFeat}.
+ * Tests for {@link ImageViewFeat}. Tests for {@link ImageControllerFeat}.
  */
 public class ImageControllerAndViewTest {
 

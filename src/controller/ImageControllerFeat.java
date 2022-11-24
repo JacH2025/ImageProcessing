@@ -1,7 +1,7 @@
 package controller;
 
 
-import  java.util.Objects;
+import java.util.Objects;
 
 import controller.commands.Load;
 import controller.commands.Save;
@@ -21,21 +21,23 @@ import model.ImageModelImpl;
 import view.ImageView;
 
 /**
- *
+ * alternate controller which impiments Features so it can be used with ImageView view for
+ * ImageModel.
  */
 public class ImageControllerFeat implements Features {
   private final ImageView view;
   private final ImageModel model;
 
   /**
+   * constructs Image Controller Features. adds This as a features to the view for it to pass inputs
+   * to this controller.
    *
-   *
-   * @param v
+   * @param view ImageView to display image processor
    */
-  public ImageControllerFeat(ImageView v) {
-    this.view = Objects.requireNonNull(v);
+  public ImageControllerFeat(ImageView view) {
+    this.view = Objects.requireNonNull(view);
     this.model = new ImageModelImpl();
-    view.addFeatures(this);
+    this.view.addFeatures(this);
   }
 
   @Override

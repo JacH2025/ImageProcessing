@@ -9,13 +9,14 @@ import javax.swing.JPanel;
 
 import java.util.Objects;
 import java.util.stream.Stream;
+
 import model.IPixel;
 import model.ImageModel;
 
 /**
- * Represents an Image's Histogram that creates line graphs that showcases the amount of
- * red, green, blur, and intense components an image has by matching their value from
- * 0 to 255. Creates a visual graph that can then be added to a main frame.
+ * Represents an Image's Histogram that creates line graphs that showcases the amount of red, green,
+ * blur, and intense components an image has by matching their value from 0 to 255. Creates a visual
+ * graph that can then be added to a main frame.
  */
 public class ImageHistogram extends JPanel {
   private final ImageModel model;
@@ -29,8 +30,8 @@ public class ImageHistogram extends JPanel {
   private final int endY = 300;
 
   /**
-   * Constructs the ImageHistogram by taking in an image's data and creating
-   * the visual panel of the graph.
+   * Constructs the ImageHistogram by taking in an image's data and creating the visual panel of the
+   * graph.
    *
    * @param model ImageModel
    */

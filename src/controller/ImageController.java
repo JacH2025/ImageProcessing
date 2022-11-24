@@ -7,8 +7,8 @@ package controller;
 public interface ImageController {
 
   /**
-   * Run allows you to run the operations of an Image Processing program where you
-   * can run various commands to load, alter, and save images.
+   * Run allows you to run the operations of an Image Processing program where you can run various
+   * commands to load, alter, and save images.
    *
    * @throws IllegalStateException if input cannot be read or output is not transmittable
    */

@@ -58,6 +58,27 @@ command.
 </p>
 </details>
 
+<details><summary> ImageControllerFeat </summary>
+<p>
+This is a second controller made to be used with the new swing based view. it implements Features,
+which is the features interface for the expected features for the swing based image processor. Each
+implementing the features is as simple as making and executing a Command object, and sending a 
+message if it fails to execute.
+</p>
+</details>
+
+### Image View
+
+<details><summary> ImageViewFeat </summary>
+<p>
+This is an implementation of ImageView which extends JFrame. 
+It has a method which takes a Feature, and uses that to send command inputs to
+the controller.
+
+the program is drawn with JFrame components.
+
+</p>
+</details>
 ### How to Use Image Processor
 
 Start program. quit or q to exit the program. help or h to see a list of supported image operations,

@@ -53,9 +53,9 @@ public class ImageCommandTest {
   }
 
   /**
-   * Everytime this test runs, a new file is created that is overriding the
-   * previous file within the res folder/directory, shows that files are overridden
-   * if the file location name is the same as the one that already exists.
+   * Everytime this test runs, a new file is created that is overriding the previous file within the
+   * res folder/directory, shows that files are overridden if the file location name is the same as
+   * the one that already exists.
    */
   @Test
   public void testCommandSaveAndOverride() {
