@@ -24,8 +24,8 @@ import view.ImageView;
  *
  */
 public class ImageControllerFeat implements Features {
-  private ImageView view;
-  private ImageModel model;
+  private final ImageView view;
+  private final ImageModel model;
 
   /**
    *
@@ -58,7 +58,15 @@ public class ImageControllerFeat implements Features {
 
   @Override
   public void saveImageAs(String imagePath, String imageName) {
-    new Save(imagePath, imageName).execute(model);
+    try {
+      new Save(imagePath, imageName).execute(model);
+      view.setCurrentImage(model.getImageModel(imageName));
+    } catch (Exception e) {
+      view.renderMessage("failed to save image");
+    }
+
+    view.clearInputString();
+
   }
 
   @Override

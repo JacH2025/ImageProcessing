@@ -2,7 +2,10 @@ import org.junit.Test;
 
 import java.util.Objects;
 
-import javax.swing.*;
+import javax.swing.JMenuItem;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
 
 import controller.Features;
 import controller.ImageControllerFeat;
