@@ -3,7 +3,36 @@
 - Jack Huang
 - Sym Cunningham
 
-### How to Use Image Processor
+### How to Use Image Processor GUI
+
+the gui is able to do all the operations of the text based image processor. Use Command-line
+argument <b>-text</b> or <b>-t</b> to use the text scripting mode.
+
+#### menu
+
+The menu at the top is where you go to execute commands.
+
+The <b> Edit Image</b> menu is where you will find all the editing commands that can be done to an
+image.
+
+The <b> File </b> menu is where you go to save or load a file.
+
+##### - User Input
+
+The <b> load path </b> and <b> save path </b> text boxes are used input the save or load paths that
+you would like to use with the <b> File </b> menu.
+
+There are also <b>buttons</b> to open a pop-up file explorer which should be used to get filepaths
+without having to type them out.
+
+The <b> Image Name </b> and <b>New Name</b> text boxes are used to select which image the operations
+are done on, and what they should be saved as. If you do not edit these fields commands will operate
+on the image in view.
+
+The <b>brighten</b> box is where you input the increment that you want to use for the brighten
+command.
+
+### How to Use Image Processor text
 
 Start program. quit or q to exit the program. help or h to see a list of supported image operations,
 and how to use them.
